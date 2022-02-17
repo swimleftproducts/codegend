@@ -10,7 +10,7 @@ import {
 
 function App() {
   const {isLoaded,loadError}= useLoadScript({
-    googleMapsApiKey: "AIzaSyAl-05QHjB4SkZgReeANCxOqKbgDwoad78"
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
   })
 
   const mapContainerStyle={
@@ -21,6 +21,11 @@ function App() {
     lat:38.7422,
     lng:-108.0690
   }
+
+  const options ={
+
+  }
+
 
   if(loadError){
     return("Error loading map")
@@ -35,6 +40,7 @@ function App() {
           mapContainerStyle={mapContainerStyle}
           zoom={10}
           center={center}
+          options={options}
         >
 
        </GoogleMap>
