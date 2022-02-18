@@ -1,5 +1,7 @@
 //general imports
 require('dotenv').config()
+
+
 const path = require('path')
 const {apiErrorHandler} = require('./errorHandling/errorHandler')
 
@@ -9,20 +11,19 @@ const app = express()
 const port = process.env.PORT || 4000
 
 //database connection
-//to be done
+require('./models')
 
 //middleware
-const authMiddleware = require('./middleware/authMiddleware')
-authMiddleware(app)
+
 const generalMiddleware = require('./middleware/generalMiddleware')
 generalMiddleware(app)
-
+const authMiddleware = require('./middleware/authMiddleware')
+authMiddleware(app)
 
 // routes
-const userRoutes = require('./routes/user')
-userRoutes(app)
-const companyRoutes = require('./routes/company')
-companyRoutes(app)
+const Routes = require('./routes/index.js')
+Routes(app)
+
 
 
 if(process.env.NODE_ENV === 'production'){

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"node index.js",
+    "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\" ",
@@ -14,13 +14,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-  "dotenv":"*",
-  "axios":"*",
-  "ejs":"*",
-  "express":"*",
-  "mongoose":"*",
-  "cors":"*",
-  "concurrently":"*",
-  "nodemon":"*"
+    "axios": "*",
+    "concurrently": "*",
+    "connect-mongo": "^4.6.0",
+    "cors": "*",
+    "dotenv": "^16.0.0",
+    "ejs": "*",
+    "express": "*",
+    "express-session": "^1.17.2",
+    "mongoose": "*",
+    "nodemon": "*",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0",
+    "uuid": "^8.3.2"
   }
 }

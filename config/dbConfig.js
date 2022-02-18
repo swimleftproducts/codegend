@@ -1,8 +1,11 @@
 module.exports={
-  getDbConnectionString:function(){     
+  getDbConnectionString:function(){   
+      
       if(process.env.NODE_ENV ==="production"){
-      return `mongodb+srv://${process.env.DBUNAME}:${process.env.DBPWD}@cluster0.d6dt5.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`}else{
-      return `mongodb+srv://${process.env.DBUNAME}:${process.env.DBPWD}@cluster0.d6dt5.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`
+      return `mongodb+srv://${process.env.DBUNAMEPROD}:${process.env.DBPWDPROD}@cluster0.jb4mc.mongodb.net/${process.env.DBNAMEPROD}?retryWrites=true&w=majority`}
+      else{
+      return `mongodb+srv://${process.env.DBUNAMEDEV}:${process.env.DBPWDDEV}@cluster0.jb4mc.mongodb.net/${process.env.DBNAMEDEV}?retryWrites=true&w=majority`
   }
   }
 }
+
