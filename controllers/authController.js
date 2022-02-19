@@ -26,7 +26,34 @@ module.exports={
                 salt: salt,
             });
         await newUser.save()
-        res.json({name:req.body.name,authenticated:true})
+
+        // no perform authentication flow
+
+        passport.authenticate(
+          'local',
+          function(err, user, info) {
+            if (err) { return next(err); }
+            
+            if (!user) { next(ApiError.badCredentials("incorrect credentials","could not find one of username or password",2002))
+            return }
+            
+            req.logIn(user, function(err) {
+              if (err) { return next(err); }
+  
+              return res.json({name:req.user.name,authenticated:true, id: req.user.id});   
+           });         
+          })(req, res, next);
+       
+        // res.json({name:req.body.name,id: newUser.id,authenticated:true})
+
+
+
+
+
+
+
+
+       
         }else{
             next(ApiError.existingCredentials("account exists for that email","account exists for that email",2004))
             return
@@ -49,7 +76,7 @@ module.exports={
           req.logIn(user, function(err) {
             if (err) { return next(err); }
 
-            return res.json({name:req.user.name,authenticated:true});   
+            return res.json({name:req.user.name,authenticated:true, id: req.user.id});   
          });         
         })(req, res, next);
 },
@@ -59,7 +86,7 @@ async logout (req,res,next){
 },
 isAuthenticated(req,res,next){
   if(req.user){
-    res.send({name:req.user.name,authenticated:true})            
+    res.send({name:req.user.name,id: req.user.id,authenticated:true})            
   }else{
     res.send({authenticated:false})
   }

@@ -11,7 +11,12 @@ const locationSchema = new Schema({
   lng:{
     type: Number
   },
-  visitedBy: [mongoose.ObjectId]
+  visitedBy:[
+    {
+      type: mongoose.ObjectId,
+      ref: 'User'
+    }
+  ]
 })
 
 module.exports = locationSchema

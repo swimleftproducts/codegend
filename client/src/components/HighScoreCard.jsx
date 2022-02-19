@@ -1,20 +1,49 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
+import axios from 'axios'
 
 function HighScoreCard(props) {
   const {setShowHighScore}=props
+  const [highScores,setHighScores]= useState()
 
   const hide = () => {
     setShowHighScore(false)
   }
+  useEffect(() => {  
+    getHighScores();
+  },[])
+ 
+   async function getHighScores(){
+     let response = await axios('/api/highscore/')
+     let highScores = await response.data
+     setHighScores(highScores)
+   }
+
+
+  const listHighScores =()=>{
+   
+    const results= highScores.map((score) => { 
+      return(
+      <tr>
+        <th scope="row">{score.score}</th>
+        <td>{score.name}</td>
+      </tr>)
+    })
+    return results;
+  }
 
   return (
   <div onClick={hide} className="highscore-card card border-success mb-3">
-    <div className="card-header bg-transparent border-success">Header</div>
-    <div className="card-body text-success">
-      <h5 className="card-title">Success card title</h5>
-      <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-    <div className="card-footer bg-transparent border-success">Footer</div>
+   <table class="table">
+  <thead>
+    <tr>
+      <th scope="col"># visited</th>
+      <th scope="col">Name</th>
+    </tr>
+  </thead>
+  <tbody>
+      {highScores?listHighScores():null}    
+  </tbody>
+</table>
   </div>
   )
 }

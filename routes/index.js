@@ -2,9 +2,10 @@
 //add routes
 const authController = require('../controllers/authController.js')
 const geoController = require('../controllers/geoController.js')
+const highScoreController = require('../controllers/highScoreController.js')
 const setupController = require('../controllers/setupController.js')
 
-const ApiError = require('../errorHandling/errorHandler')
+const {ApiError} = require('../errorHandling/errorHandler')
 
 module.exports= (app) => {
     //setup route
@@ -19,6 +20,9 @@ module.exports= (app) => {
     app.get('/api/auth/logout',authController.logout)
     app.get('/api/auth/isauthenticated',authController.isAuthenticated)
 
+    //score related routes
+    app.get('/api/highscore/',highScoreController.getHighScores)
+
     //Geo related routes
     app.get('/api/geo/markers',geoController.markers)
     app.post('/api/geo/addlocation',checkAuthenticated,geoController.addLocation)
@@ -28,6 +32,7 @@ module.exports= (app) => {
         if(req.isAuthenticated()){
            return next()
         }
+        
         next(ApiError.noPermission('your session expired, please login', "Error occurred in authentication middleware",2000))
         
     }

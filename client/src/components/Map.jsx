@@ -80,7 +80,7 @@ function Map(props) {
        }}
        onCloseClick={() => {setSelectedLocation(null) }}
       >
-       <LocationDetail auth={auth} selectedLocation={selectedLocation}/>
+       <LocationDetail auth={auth} getLocationData={getLocationData} setSelectedLocation={setSelectedLocation} selectedLocation={selectedLocation}/>
       </InfoWindow>):null}
       
     </GoogleMap>
