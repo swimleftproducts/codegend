@@ -1,15 +1,28 @@
 import axios from 'axios'
 import React, {useState} from 'react'
 
-export default function RegisterCard() {
+export default function RegisterCard(props) {
   const [password,setPassword]=useState('')
   const [email,setEmail]=useState('')
   const [name, setName]=useState('')
+  const [message, setMessage]=useState('')
+
+  const{setAuth, setShowRegister}=props
 
   const onSubmit = async (event) => {
-    let formData = { password,email}
-    console.log(password,email);
-    const response = await axios.post('/api/auth/register',formData, { withCredentials: true })
+    let formData = { password,email,name}
+    
+    axios.post('/api/auth/register',formData, { withCredentials: true })
+    .then((response)=>{
+      setAuth(response.data)
+      setMessage("Successful login");
+      setTimeout(() => { 
+        setShowRegister(false)
+      },500)
+    })
+    .catch((err) => { 
+      setMessage("Registration Error")
+     })
   }
 
   return (
@@ -46,6 +59,7 @@ export default function RegisterCard() {
               e.preventDefault()
               onSubmit();
             }}>Sign Up</button>
+              {message?<p>{message}</p>:null}
           </div>
         </div>
   )

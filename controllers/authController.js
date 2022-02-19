@@ -9,6 +9,10 @@ module.exports={
     console.log('example route')
   },
   async register(req,res,next){
+    const {email, name}= req.body
+    if(email==="" || name===""){
+      next(ApiError.badRequest("Email and Name required","Email and Name required",20000))
+    }
     try{        
         let user=await User.findOne({email: req.body.email})
         if(!user){   
@@ -22,13 +26,12 @@ module.exports={
                 salt: salt,
             });
         await newUser.save()
-        res.send('User Created')
+        res.json({name:req.body.name,authenticated:true})
         }else{
             next(ApiError.existingCredentials("account exists for that email","account exists for that email",2004))
             return
         }
-    }catch(err){
-        
+    }catch(err){        
         next(ApiError.internal('database error',"Error occurred in registering user",2003))
     }
   },

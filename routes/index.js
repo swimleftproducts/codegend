@@ -8,7 +8,9 @@ const ApiError = require('../errorHandling/errorHandler')
 
 module.exports= (app) => {
     //setup route
-    app.get('/api/setup/clearUsers',setupController.clear)  
+    app.get('/api/setup/clearUsers',setupController.clear)
+    app.get('/api/setup/loadLocations',setupController.loadLocations) 
+    app.get('/api/setup/clearLocations',setupController.clearLocations)
 
     //auth routes
     app.get('/api/auth/test',authController.test)
@@ -19,6 +21,7 @@ module.exports= (app) => {
 
     //Geo related routes
     app.get('/api/geo/markers',geoController.markers)
+    app.post('/api/geo/addlocation',checkAuthenticated,geoController.addLocation)
 
     function checkAuthenticated(req,res,next){
     

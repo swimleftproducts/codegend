@@ -14,6 +14,12 @@ const userSchema = new Schema({
   salt:{
     type:String
   },
+  locationsVisited:[
+    {
+      type: mongoose.ObjectId,
+      ref: 'Location'
+    }
+  ]
 })
 
 module.exports = userSchema

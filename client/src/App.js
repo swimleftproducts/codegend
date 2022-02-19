@@ -1,57 +1,30 @@
 import React, {useState, useMemo, useEffect} from 'react';
 import './App.css';
 import axios from 'axios';
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-  InfoWindow,
-} from '@react-google-maps/api'
-
 import LoginCard from './components/LoginCard';
 import RegisterCard from './components/RegisterCard'
-import Button from './components/Button';
+import HighScoreCard from './components/HighScoreCard';
+import Map from './components/Map';
 
 function App() {
   const[showLogin,setShowLogin]= useState(false)
   const[showRegister,setShowRegister]= useState(false)
-  const[locations,setLocations]=useState([])
-  const[selectedLocation,setSelectedLocation]=useState(null)
+  const[showHighScore,setShowHighScore]= useState(false)
+  const[auth,setAuth]=useState({authenticated:false,name:null})
+  
 
-  async function getLocationData(){
-    let response = await axios('/api/geo/markers')
-    let markers = await response.data
-    setLocations(markers)
-  }
-
-  useEffect(() => {  
-   getLocationData();
+  //check login status
+  useEffect(() => { 
+    getLoginStatus()
   },[])
 
-  const {isLoaded,loadError}= useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
-  })
-
-  const mapContainerStyle={
-    width:"100vw",
-    height:"100vh"
+  async function getLoginStatus(){
+    let response = await axios('/api/auth/isAuthenticated')
+    
+    if(response.data.authenticated){
+      setAuth(response.data)
+    }
   }
-  const center ={
-    lat:38.7422,
-    lng:-108.0690
-  }
-
-  const options ={
-   streetViewControl: false,
-   fullscreenControl: false,
-   disableAutoPan: true
-  }
-
-
-  if(loadError){
-    return("Error loading map")
-  }
-  if(!isLoaded) return "Loading Maps"
 
   const toggleLogin =(e) => {
     setShowRegister(false)
@@ -60,41 +33,26 @@ function App() {
   const toggleRegister =(e) => {
     setShowLogin(false)
     setShowRegister(!showRegister)
-   
   }
+  const logout = async (e) => {
+    let response = await axios('/api/auth/logout')
+    if(!response.data.authenticated){
+      setAuth({})
+    }
+  }
+
 
   return (
     <div className="App">
+      {auth.authenticated?<button className="btn btn-success register-btn " disabled >{auth.name}</button>:null}
       <button className="btn btn-primary login-btn" onClick={toggleLogin}>Login</button>
-      <button className="btn btn-secondary register-btn" onClick={toggleRegister}>Register</button>
-      {showLogin?<LoginCard/>:null}
-      {showRegister?<RegisterCard/>:null}
-       <GoogleMap 
-          mapContainerStyle={mapContainerStyle}
-          zoom={10}
-          center={center}
-          options={options}
-        >
-          {locations.map((location) => {
-              return <Marker key={location.id} position={{
-                lat:location.lat, 
-                lng:location.lng
-              }} 
-              onClick={() => { setSelectedLocation(location)}}/>
-            }
-          )}
-          {selectedLocation ?(<InfoWindow
-            options={{disableAutoPan: true}}
-             position={{
-              lat:selectedLocation.lat, 
-              lng:selectedLocation.lng
-             }}
-             onCloseClick={() => {setSelectedLocation(null) }}
-            >
-              <div><h4>{selectedLocation.name}</h4></div>
-            </InfoWindow>):null}
-        
-       </GoogleMap>
+      {auth.authenticated?<button className="btn btn-primary login-btn" onClick={logout}>Logout</button>:null} 
+      {!auth.authenticated?<button className="btn btn-secondary register-btn" onClick={toggleRegister}>Register</button>:null}
+      {showLogin?<LoginCard setAuth={setAuth} setShowLogin={setShowLogin}/>:null}
+      {showRegister?<RegisterCard setAuth={setAuth} setShowRegister={setShowRegister}/>:null}
+      {showHighScore?<HighScoreCard setShowHighScore={setShowHighScore} />:<i className="highscore-icon bi bi-card-checklist" onClick={()=>{setShowHighScore(true)}}></i>}
+      <Map auth={auth}/>
+      
     </div>
   );
 }

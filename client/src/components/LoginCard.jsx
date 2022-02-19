@@ -1,16 +1,31 @@
 import axios from 'axios'
 import React, {useState} from 'react'
 
-export default function LoginCard() {
+export default function LoginCard(props) {
   const [password,setPassword]=useState('')
   const [email,setEmail]=useState('')
+  const [message,setMessage]=useState()
+
+ const{setAuth,setShowLogin}=props
 
   const onSubmit = async (event) => {
     let formData = { password,email}
-    console.log(password,email);
-    const response = await axios.post('/api/auth/login',formData, { withCredentials: true })
-
-    console.log(response);
+    axios.post('/api/auth/login',formData, { withCredentials: true })
+    .then((response) => { 
+      setAuth(response.data)
+      setMessage("Successful login");
+      setTimeout(() => { 
+        setShowLogin(false)
+      },500)
+     })
+    .catch((err)=>{
+      setMessage(err.response.data.message);
+      return
+    })
+   
+   
+    
+   
   }
 
   return (
@@ -38,6 +53,7 @@ export default function LoginCard() {
               e.preventDefault()
               onSubmit();
             }}>Login</button>
+            {message?<p>{message}</p>:null}
           </div>
         </div>
   )

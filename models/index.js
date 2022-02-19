@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const userSchema = require('./userSchema')
+const locationSchema = require('./locationSchema')
 
 
 // get db string
@@ -17,8 +18,10 @@ useUnifiedTopology: true}
 })
 
 const User = mongoose.model('User',userSchema)
+const Location = mongoose.model('Location',locationSchema)
 
 
 module.exports={
-User
+User,
+Location
 }

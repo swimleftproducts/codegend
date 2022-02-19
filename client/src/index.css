@@ -11,7 +11,7 @@ body {
   transform: translate(-50%,-50%);
   z-index: 10;
   width: 400px;
-  height: 300px;
+  height: 340px;
 }
 .register{
   position:absolute;
@@ -44,4 +44,26 @@ body {
 .btn:focus,
 .btn:active {
   box-shadow: none !important;
+}
+
+.location-detail{
+  width:200px;
+  height:200px;
+}
+
+.highscore-icon{
+  position: absolute;
+  height:100px;
+  font-size: 50px;
+  transform: translate(0%,-50%);
+  top: 50%;
+  z-index: 10;
+}
+.highscore-card{
+  position: absolute;
+  height:300px;
+  width:300px;
+  transform: translate(0%,-50%);
+  top: 50%;
+  z-index: 10;
 }
