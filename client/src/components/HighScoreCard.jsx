@@ -33,7 +33,7 @@ function HighScoreCard(props) {
 
   return (
   <div onClick={hide} className="highscore-card card border-success mb-3">
-   <table class="table">
+   <table className="table">
   <thead>
     <tr>
       <th scope="col"># visited</th>

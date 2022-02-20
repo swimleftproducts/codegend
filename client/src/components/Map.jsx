@@ -47,7 +47,8 @@ function Map(props) {
   const options ={
    streetViewControl: false,
    fullscreenControl: false,
-   disableAutoPan: true
+   disableAutoPan: true,
+   clickableIcons: false
   }
 
 
@@ -78,6 +79,7 @@ function Map(props) {
         lat:selectedLocation.lat, 
         lng:selectedLocation.lng
        }}
+       
        onCloseClick={() => {setSelectedLocation(null) }}
       >
        <LocationDetail auth={auth} getLocationData={getLocationData} setSelectedLocation={setSelectedLocation} selectedLocation={selectedLocation}/>

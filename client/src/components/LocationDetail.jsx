@@ -13,9 +13,10 @@ function LocationDetail(props) {
       }else{
         setHasVisited(false)
       }
-      
     })
-  
+    if(selectedLocation.visitedBy.length===0){
+      setHasVisited(false)
+    }
   },[auth.id,selectedLocation])
 
 
