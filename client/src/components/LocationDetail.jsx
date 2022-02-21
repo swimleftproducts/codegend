@@ -8,7 +8,7 @@ function LocationDetail(props) {
 
   useEffect(() => {
     selectedLocation.visitedBy.forEach(visitor=>{
-      if(visitor.id===auth.id){
+      if(visitor.userId===auth.id){
         setHasVisited(true)
       }else{
         setHasVisited(false)
@@ -25,7 +25,7 @@ function LocationDetail(props) {
     await axios.post('/api/geo/addlocation',locData, { withCredentials: true })
     .then((response) => { 
       getLocationData()
-      console.log(response.data)
+      
       setSelectedLocation(response.data)
     })
 
@@ -33,7 +33,10 @@ function LocationDetail(props) {
  
   }
   const visitedBy = selectedLocation.visitedBy.map((person,index)=>{
-    return  <li key={index} className="list-group-item">{person.name}</li>
+    console.log("person data", person);
+    const date = new Date(person.date)
+   
+    return  <li key={index} className="list-group-item">{person.name} visited on {`${date.getUTCMonth()+1}/${date.getUTCDate()}`}</li>
   })
 
   return (

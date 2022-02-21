@@ -15,10 +15,11 @@ const userSchema = new Schema({
     type:String
   },
   locationsVisited:[
-    {
+      {
       type: mongoose.ObjectId,
       ref: 'Location'
-    }
+      }
+    
   ]
 })
 

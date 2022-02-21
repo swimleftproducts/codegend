@@ -50,7 +50,7 @@ const locations=[
   {
     title: "ESCALANTE POTHOLES",
     lat:38.66946,
-    lng:-108.17298,
+    lng:-108.32698,
   },	
   {
     title: "ESCALANTE FORKS - BRUSHY RIDGE ROAD",

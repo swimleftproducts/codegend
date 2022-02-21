@@ -11,7 +11,11 @@ module.exports={
      })
    
   },
-  loadLocations(req,res,next){
+  async loadLocations(req,res,next){
+    await Location.deleteMany({})
+    .then(() => {
+      console.log("deleted all locations")
+    })
     // save all locations into db
     locations.map(async (geoCache) => { 
       const newLocation =new Location(
