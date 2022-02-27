@@ -44,10 +44,12 @@ function App() {
 
   return (
     <div className="App">
+      {showRegister || showLogin?<div className="modal-active " onClick={()=>{setShowRegister(false); setShowLogin(false)}}>modal</div>:null}
+
       {auth.authenticated?<button className="btn btn-success register-btn " disabled >{auth.name}</button>:null}
-      <button className="btn btn-primary login-btn" onClick={toggleLogin}>Login</button>
+      <button className="btn login-btn-primary login-btn" onClick={toggleLogin}>Login</button>
       {auth.authenticated?<button className="btn btn-primary login-btn" onClick={logout}>Logout</button>:null} 
-      {!auth.authenticated?<button className="btn btn-secondary register-btn" onClick={toggleRegister}>Register</button>:null}
+      {!auth.authenticated?<button className="btn login-btn-secondary register-btn" onClick={toggleRegister}>Register</button>:null}
       {showLogin?<LoginCard setAuth={setAuth} setShowLogin={setShowLogin}/>:null}
       {showRegister?<RegisterCard setAuth={setAuth} setShowRegister={setShowRegister}/>:null}
       {showHighScore?<HighScoreCard setShowHighScore={setShowHighScore} />:<i className="highscore-icon bi bi-card-checklist" onClick={()=>{setShowHighScore(true)}}></i>}

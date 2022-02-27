@@ -1,7 +1,38 @@
+:root{
+  --primary-color: #2d303F ;
+  --secondary-color:#424EAD;
+  --white-text:#FFFFFF;
+ 
+}
+
+
+
+
+
+
 body {
   background-color: teal;
   padding: 0;
   margin: 0;
+}
+.login-btn-primary{
+ background-color: var(--primary-color);
+ color: var(--white-text)
+}
+
+.login-btn-secondary{
+  background-color: var(--secondary-color);
+  color: var(--white-text);
+}
+
+.modal-active{
+  background-color: rgba(0,0,0, .5);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 8;
 }
 
 .login{
