@@ -40,16 +40,66 @@ function LocationDetail(props) {
   })
 
   return (
-    <div className='location-detail'><p>Title: {selectedLocation.title}</p>
-    {auth.authenticated?<button onClick={checkOff} 
-    disabled={hasVisited}
-    className={` btn btn-primary btn-sm mb-2`}>{hasVisited?"Visited":"Check off"}</button>:null}
-    <p>Most recent visits:</p>
-    <ul className="list-group">
-      {visitedBy}
-    </ul>
+    <div className='location-detail'>
+      {/* This is the label */}
+      <div className="label-box">
+        <div className="title title-main">Title:</div>
+        <div className="title">{selectedLocation.title}</div>   
+      </div>
+      
+      {/* This is the button */}
+      <div className="visit-btn-box">
+       
+          <button className="visit-btn-today">Visited today</button>
+          <button className="visit-btn-past">Visited in past</button>
+        
+      </div>
+
+      {/* {auth.authenticated?<button onClick={checkOff} 
+      disabled={hasVisited}
+      className={` btn btn-primary btn-sm mb-2`}>{hasVisited?"Visited":"Check off"}</button>:null} */}
+
+      {/* This is the recent visitors */}
+      <div className="recent-visits">
+        <div className="recent-visits-title">
+          <h5>Last 5 Visits:</h5>
+        </div>
+        
+        <div className="recent-visits-list">
+          <ul className="">
+          <li  className="">
+            <h6>Name</h6>
+            <h6>1-1-2022</h6>
+          </li>
+          <li  className="">
+            <h6>Name</h6>
+            <h6>1-1-2022</h6>
+          </li>
+          <li  className="">
+            <h6>Name</h6>
+            <h6>1-1-2022</h6>
+          </li>         
+          
+          </ul>
+        </div>
+       
+      
+      </div>
+      
     </div>
   )
 }
 
 export default LocationDetail
+
+// {/* <div className='location-detail'><p>Title: {selectedLocation.title}</p>
+//     {auth.authenticated?<button onClick={checkOff} 
+//     disabled={hasVisited}
+//     className={` btn btn-primary btn-sm mb-2`}>{hasVisited?"Visited":"Check off"}</button>:null}
+//     <p>Most recent visits:</p>
+//     <ul className="list-group">
+//       {visitedBy}
+//     </ul>
+//     </div> */}
+
+// {visitedBy}

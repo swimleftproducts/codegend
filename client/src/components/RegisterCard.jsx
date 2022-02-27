@@ -30,13 +30,13 @@ export default function RegisterCard(props) {
      })
   }
   const validateName =()=>{
-    if(name.length<=3){
+    if(name.length<=1){
       setNameMessage("at least 2 letters")
     }
     if(name.length===0){
       setNameMessage("")
     }
-    if(name.length>3){
+    if(name.length>1){
       setNameMessage("")
     }
   }
