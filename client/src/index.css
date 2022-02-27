@@ -51,7 +51,7 @@ body {
   transform: translate(-50%,-50%);
   z-index: 10;
   width: 400px;
-  height: 400px;
+  height: 450px;
 }
 
 .login-btn{
@@ -77,6 +77,27 @@ body {
   box-shadow: none !important;
 }
 
+.register-heading{
+  background-color: var(--primary-color);
+  color: white;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+
+.form-outline{
+ text-align: start !important;
+}
+
+.register-form-btn{
+ background-color: var(--secondary-color);
+ color: white;
+ border-radius: 0px !important;
+}
+
 .location-detail{
   width:200px;
   height:200px;
@@ -97,4 +118,23 @@ body {
   transform: translate(0%,-50%);
   top: 50%;
   z-index: 10;
+}
+
+.error-text{
+  height:12px;
+  color: red;
+  line-height: 12px;
+  font-size: 12px;
+  margin: 0px;
+  padding:0px;
+  text-align: end;
+}
+.error-text-main{
+  height:20px;
+  color: red;
+  line-height: 18px;
+  font-size: 18px;
+  margin: 0px;
+  padding:0px;
+  text-align: center;
 }
