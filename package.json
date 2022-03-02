@@ -27,6 +27,7 @@
     "nodemon": "*",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
+    "react-day-picker": "^7.4.10",
     "uuid": "^8.3.2",
     "yup": "^0.32.11"
   }

@@ -1,6 +1,6 @@
 import axios from 'axios'
-import React, {useEffect, useState} from 'react'
-import { validate } from 'uuid'
+import React, {useEffect, useState, useContext} from 'react'
+import { DisplayContext } from './DisplayContext'
 
 export default function RegisterCard(props) {
   const [password,setPassword]=useState('')
@@ -11,8 +11,9 @@ export default function RegisterCard(props) {
   const [emailMessage, setEmailMessage]=useState('')
   const [passwordMessage, setPasswordMessage]=useState('')
 
+  const {setShowRegister} = useContext(DisplayContext )
 
-  const{setAuth, setShowRegister}=props
+  const{setAuth}=props
 
   const onSubmit = async (event) => {
     let formData = { password,email,name}

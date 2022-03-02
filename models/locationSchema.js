@@ -11,12 +11,6 @@ const locationSchema = new Schema({
   lng:{
     type: Number
   },
-  // visitedBy:[
-  //   {
-  //     type: mongoose.ObjectId,
-  //     ref: 'User'
-  //   }
-  // ]
   visitedBy:[
      {
       userId: {

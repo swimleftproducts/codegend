@@ -26,6 +26,7 @@ module.exports= (app) => {
     //Geo related routes
     app.get('/api/geo/markers',geoController.markers)
     app.post('/api/geo/addlocation',checkAuthenticated,geoController.addLocation)
+    app.post('/api/geo/addpastlocation',checkAuthenticated,geoController.addPastLocation)
 
     function checkAuthenticated(req,res,next){
     

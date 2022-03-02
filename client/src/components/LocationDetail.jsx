@@ -1,14 +1,22 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect, useContext} from 'react'
 import axios from 'axios'
 import VisitButtons from './VisitButtons';
+import DatePicker from './DatePicker'
 import RecentVisitors from './RecentVisitors';
+import {LocationContext} from './LocationContext'
+import { DisplayContext } from './DisplayContext';
 
 function LocationDetail(props) {
-  const {setSelectedLocation, selectedLocation, getLocationData, auth}=props
+
+  const {getLocationData, selectedLocation, setSelectedLocation, setInfoBoxOffset} = useContext(LocationContext)
+
+  const{showDatePicker,showRecentVisitors,setShowRecentVisitors} = useContext(DisplayContext)
+
+  const {auth}=props
   
   const [hasVisited,setHasVisited]=useState(false);
-  const [showRecentVisitors,setShowRecentVisitors]=useState(true);
-
+  
+ 
   useEffect(() => {
     selectedLocation.visitedBy.forEach(visitor=>{
       if(visitor.userId===auth.id){
@@ -24,24 +32,27 @@ function LocationDetail(props) {
 
 
   return (
-    <div className='location-detail'>
+    <div className={` location-detail`}>
       {/* This is the label */}
       <div className="label-box">
         <div className="title title-main">Title:</div>
         <div className="title">{selectedLocation.title}</div>   
-      </div>
-      
-      {/* This is the button */}
+      </div> 
 
+      {auth.authenticated?<VisitButtons 
+      />:null}
 
-     
-
-      {auth.authenticated?<VisitButtons selectedLocation={selectedLocation} setSelectedLocation={setSelectedLocation} getLocationData={getLocationData}/>:null}
       {showRecentVisitors?<RecentVisitors details={selectedLocation}/>:null}
-
+      
+      {showDatePicker?<DatePicker 
+       setSelectedLocation={setSelectedLocation}
+      
+      getLocationData={getLocationData} location={selectedLocation}/>:null}
       {/* This is the recent visitors */}
       <div className='close-icon' >
-        <div className='' onClick={()=>{setSelectedLocation(null)}}>
+        <div className='' onClick={()=>{
+          setInfoBoxOffset(-40) 
+          setSelectedLocation(null)}}>
            <i className="bi bi-caret-up-fill "></i>
           <p>close</p>
         </div>

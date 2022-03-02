@@ -1,12 +1,16 @@
 import axios from 'axios'
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import { DisplayContext } from './DisplayContext'
 
 export default function LoginCard(props) {
+
+  
   const [password,setPassword]=useState('')
   const [email,setEmail]=useState('')
   const [message,setMessage]=useState()
 
- const{setAuth,setShowLogin}=props
+  const{setAuth}=props
+  const {setShowLogin} = useContext(DisplayContext )
 
   const onSubmit = async (event) => {
     let formData = { password,email}

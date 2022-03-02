@@ -2,12 +2,12 @@ import React from 'react'
 
 function RecentVisitors(props) {
   const {details}=props
-  console.log(details);
+
 
   const renderVisits = ()=>{
    
     const list = [];
-    console.log(details.visitedBy[0]);
+   
     if (!details.visitedBy[0]) return list
     else{
 
