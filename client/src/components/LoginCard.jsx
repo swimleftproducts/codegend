@@ -31,24 +31,29 @@ export default function LoginCard(props) {
   return (
     <div className=" login card shadow-2-strong">
           <div className="card-body p-4 text-center">
-            <h4 className="mb-2">Sign in</h4>
+            <div className='register-heading'>
+              <h4 className="mb-1">Sign in</h4>
+            </div>
+          
             <div className="form-outline mb-2">
-              <input type="email" id="typeEmailX-2" className="form-control form-control-lg"
+              <label className="form-label p-0 m-0" htmlFor="email">Email</label>
+              <input type="email" id="email" className="form-control form-control-lg"
               onChange={(e) => {
                 setEmail(e.target.value)    
               }} />
-              <label className="form-label" htmlFor="typeEmailX-2">Email</label>
+              
             </div>
 
-            <div className="form-outline mb-3">
-              <input type="password" id="typePasswordX-2" className="form-control form-control-lg"
+            <div className="form-outline mb-3"> 
+            <label className="form-label p-0 m-0" htmlFor="password">Password</label>
+              <input type="password" id="password" className="form-control form-control-lg"
               onChange={(e) => {
                 setPassword(e.target.value)    
               }} />
-              <label className="form-label" htmlFor="typePasswordX-2">Password</label>
+             
             </div>
 
-            <button className="btn btn-primary btn-med btn-block" type="submit"
+            <button className="mt-0 btn register-form-btn btn-med btn-block" type="submit"
              onClick={(e) => {
               e.preventDefault()
               onSubmit();

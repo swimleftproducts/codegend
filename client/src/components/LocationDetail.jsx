@@ -1,10 +1,13 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
+import VisitButtons from './VisitButtons';
+import RecentVisitors from './RecentVisitors';
 
 function LocationDetail(props) {
   const {setSelectedLocation, selectedLocation, getLocationData, auth}=props
   
   const [hasVisited,setHasVisited]=useState(false);
+  const [showRecentVisitors,setShowRecentVisitors]=useState(true);
 
   useEffect(() => {
     selectedLocation.visitedBy.forEach(visitor=>{
@@ -20,25 +23,6 @@ function LocationDetail(props) {
   },[auth.id,selectedLocation])
 
 
-  const checkOff=async ()=>{
-    const locData = {id:selectedLocation._id}
-    await axios.post('/api/geo/addlocation',locData, { withCredentials: true })
-    .then((response) => { 
-      getLocationData()
-      
-      setSelectedLocation(response.data)
-    })
-
-
- 
-  }
-  const visitedBy = selectedLocation.visitedBy.map((person,index)=>{
-    console.log("person data", person);
-    const date = new Date(person.date)
-   
-    return  <li key={index} className="list-group-item">{person.name} visited on {`${date.getUTCMonth()+1}/${date.getUTCDate()}`}</li>
-  })
-
   return (
     <div className='location-detail'>
       {/* This is the label */}
@@ -48,58 +32,25 @@ function LocationDetail(props) {
       </div>
       
       {/* This is the button */}
-      <div className="visit-btn-box">
-       
-          <button className="visit-btn-today">Visited today</button>
-          <button className="visit-btn-past">Visited in past</button>
-        
-      </div>
 
-      {/* {auth.authenticated?<button onClick={checkOff} 
-      disabled={hasVisited}
-      className={` btn btn-primary btn-sm mb-2`}>{hasVisited?"Visited":"Check off"}</button>:null} */}
+
+     
+
+      {auth.authenticated?<VisitButtons selectedLocation={selectedLocation} setSelectedLocation={setSelectedLocation} getLocationData={getLocationData}/>:null}
+      {showRecentVisitors?<RecentVisitors details={selectedLocation}/>:null}
 
       {/* This is the recent visitors */}
-      <div className="recent-visits">
-        <div className="recent-visits-title">
-          <h5>Last 5 Visits:</h5>
-        </div>
-        
-        <div className="recent-visits-list">
-          <ul className="">
-          <li  className="">
-            <h6>Name</h6>
-            <h6>1-1-2022</h6>
-          </li>
-          <li  className="">
-            <h6>Name</h6>
-            <h6>1-1-2022</h6>
-          </li>
-          <li  className="">
-            <h6>Name</h6>
-            <h6>1-1-2022</h6>
-          </li>         
-          
-          </ul>
+      <div className='close-icon' >
+        <div className='' onClick={()=>{setSelectedLocation(null)}}>
+           <i className="bi bi-caret-up-fill "></i>
+          <p>close</p>
         </div>
        
-      
       </div>
+      
       
     </div>
   )
 }
 
 export default LocationDetail
-
-// {/* <div className='location-detail'><p>Title: {selectedLocation.title}</p>
-//     {auth.authenticated?<button onClick={checkOff} 
-//     disabled={hasVisited}
-//     className={` btn btn-primary btn-sm mb-2`}>{hasVisited?"Visited":"Check off"}</button>:null}
-//     <p>Most recent visits:</p>
-//     <ul className="list-group">
-//       {visitedBy}
-//     </ul>
-//     </div> */}
-
-// {visitedBy}

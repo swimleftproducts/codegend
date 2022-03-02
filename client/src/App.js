@@ -52,7 +52,7 @@ function App() {
       {!auth.authenticated?<button className="btn login-btn-secondary register-btn" onClick={toggleRegister}>Register</button>:null}
       {showLogin?<LoginCard setAuth={setAuth} setShowLogin={setShowLogin}/>:null}
       {showRegister?<RegisterCard setAuth={setAuth} setShowRegister={setShowRegister}/>:null}
-      {showHighScore?<HighScoreCard setShowHighScore={setShowHighScore} />:<i className="highscore-icon bi bi-card-checklist" onClick={()=>{setShowHighScore(true)}}></i>}
+      {showHighScore?<HighScoreCard setShowHighScore={setShowHighScore} />:<i className="highscore-icon bi bi-bar-chart-fill" onClick={()=>{setShowHighScore(true)}}></i>}
       <Map auth={auth}/>
       
     </div>

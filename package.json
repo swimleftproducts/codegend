@@ -22,10 +22,12 @@
     "ejs": "*",
     "express": "*",
     "express-session": "^1.17.2",
+    "formik": "^2.2.9",
     "mongoose": "*",
     "nodemon": "*",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "yup": "^0.32.11"
   }
 }

@@ -16,18 +16,24 @@ export default function RegisterCard(props) {
 
   const onSubmit = async (event) => {
     let formData = { password,email,name}
-    
-    axios.post('/api/auth/register',formData, { withCredentials: true })
-    .then((response)=>{
-      setAuth(response.data)
-      setMessage("Successful login");
-      setTimeout(() => { 
-        setShowRegister(false)
-      },500)
-    })
-    .catch((err) => { 
-      setMessage("Registration Error")
-     })
+    if(emailMessage==="" && nameMessage==="" && passwordMessage===""){
+
+      axios.post('/api/auth/register',formData, { withCredentials: true })
+      .then((response)=>{
+        setAuth(response.data)
+        setMessage("Successful login");
+        setTimeout(() => { 
+          setShowRegister(false)
+        },500)
+      })
+      .catch((err) => { 
+        setMessage("Registration Error")
+       })
+
+    }else{
+      setMessage("Please complete all fields")
+    }
+   
   }
   const validateName =()=>{
     if(name.length<=1){
@@ -43,7 +49,7 @@ export default function RegisterCard(props) {
 
   const validatePassword =()=>{
     if(password.length<=5){
-      setPasswordMessage("at least 6 character")
+      setPasswordMessage("at least 6 characters")
     }
     if(password.length===0){
       setPasswordMessage("")
@@ -52,10 +58,19 @@ export default function RegisterCard(props) {
       setPasswordMessage("")
     }
   }
+  const validateEmail =()=>{
+    var re = /\S+@\S+\.\S+/;
+    if(!re.test(email)){
+      setEmailMessage("please add a valid email")
+    }else{
+      setEmailMessage('')
+    }
+  }
   useEffect(() => {
     validateName(); 
     validatePassword();
-  },[name,password]
+    validateEmail()
+  },[name,password,email]
   )
 
   return (
@@ -68,8 +83,8 @@ export default function RegisterCard(props) {
             
            
             <div className="form-outline mb-2">
-            <label className="form-label p-0 m-0 " htmlFor="typeEmailX-2">Name</label>
-              <input type="email" id="typeEmailX-2" className="form-control form-control-lg"
+            <label className="form-label p-0 m-0 " htmlFor="email">Name</label>
+              <input type="email" id="name" className="form-control form-control-lg"
               onChange={(e) => {
                 setName(e.target.value) 
                  
@@ -79,8 +94,8 @@ export default function RegisterCard(props) {
             </div>
 
             <div className="form-outline mb-2">
-                <label className="form-label p-0 m-0" htmlFor="typeEmailX-2">Email or username</label>
-                <input type="email" id="typeEmailX-2" className="form-control form-control-lg"
+                <label className="form-label p-0 m-0" htmlFor="typeEmailX-2">Email</label>
+                <input type="email" id="email" className="form-control form-control-lg"
               onChange={(e) => {
                 setEmail(e.target.value)    
               }} />
