@@ -1,22 +1,25 @@
-import React from 'react'
+import React,{useContext} from 'react'
+import { LocationContext } from "./LocationContext";
 
 function RecentVisitors(props) {
-  const {details}=props
+
+  const {selectedLocation} = useContext(LocationContext)
 
 
   const renderVisits = ()=>{
-   
+    
+    
     const list = [];
    
-    if (!details.visitedBy[0]) return list
+    if (!selectedLocation.visitedBy[0]) return list
     else{
 
       for (let i = 0; i < 5; i++) {
-        if(details.visitedBy[i]){
-            let visitDate = new Date(details.visitedBy[i].date)
+        if(selectedLocation.visitedBy[i]){
+            let visitDate = new Date(selectedLocation.visitedBy[i].date)
             list.push(
               <div key={i} className='recent-visits-entry'>
-              <h6>{details.visitedBy[i].name}</h6>
+              <h6>{selectedLocation.visitedBy[i].name}</h6>
               <h6>{`${visitDate.getUTCMonth()+1}/${visitDate.getUTCDate()}`}</h6>
             </div>
             )    
@@ -25,16 +28,7 @@ function RecentVisitors(props) {
       return list;
     }
     
-    // return details.visitedBy.map((visitor,index)=>{
-    //   const {name,date}=visitor
-    //   const visitDate = new Date(date)
-      
-    //   return <div key={index} className='recent-visits-entry'>
-    //   <h6>{name}</h6>
-    //   <h6>{`${visitDate.getUTCMonth()+1}/${visitDate.getUTCDate()}`}</h6>
-    // </div>
-   
-    // })
+  
   }
 
   return (

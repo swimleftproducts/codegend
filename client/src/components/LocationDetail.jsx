@@ -8,9 +8,9 @@ import { DisplayContext } from './DisplayContext';
 
 function LocationDetail(props) {
 
-  const {getLocationData, selectedLocation, setSelectedLocation, setInfoBoxOffset} = useContext(LocationContext)
+  const {selectedLocation, setSelectedLocation, setInfoBoxOffset} = useContext(LocationContext)
 
-  const{showDatePicker,showRecentVisitors,setShowRecentVisitors} = useContext(DisplayContext)
+  const{showDatePicker,showRecentVisitors} = useContext(DisplayContext)
 
   const {auth}=props
   
@@ -39,16 +39,11 @@ function LocationDetail(props) {
         <div className="title">{selectedLocation.title}</div>   
       </div> 
 
-      {auth.authenticated?<VisitButtons 
-      />:null}
+      {auth.authenticated?<VisitButtons/>:null}
+      {showRecentVisitors?<RecentVisitors/>:null}
+      {showDatePicker?<DatePicker/>:null}
 
-      {showRecentVisitors?<RecentVisitors details={selectedLocation}/>:null}
-      
-      {showDatePicker?<DatePicker 
-       setSelectedLocation={setSelectedLocation}
-      
-      getLocationData={getLocationData} location={selectedLocation}/>:null}
-      {/* This is the recent visitors */}
+     
       <div className='close-icon' >
         <div className='' onClick={()=>{
           setInfoBoxOffset(-40) 

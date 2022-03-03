@@ -9,10 +9,13 @@ import {
 } from '@react-google-maps/api'
 import LocationDetail from './LocationDetail';
 import { LocationContext } from './LocationContext';
+import {DisplayContext} from './DisplayContext'
 
 
 function Map(props) {
-  const {getLocationData, selectedLocation, setSelectedLocation, mapCenter,  setLocations,locations, infoBoxOffset,setInfoBoxOffset} = useContext(LocationContext)
+  const {getLocationData, selectedLocation, setSelectedLocation, mapCenter,  locations, infoBoxOffset,setInfoBoxOffset} = useContext(LocationContext)
+  const{setShowDatePicker,setShowRecentVisitors} = useContext(DisplayContext)
+
 
   const {auth}=props
 
@@ -66,11 +69,15 @@ function Map(props) {
         lng:selectedLocation.lng
        }}
        
-       onCloseClick={() => {setSelectedLocation(null) }}
+       onCloseClick={() => {
+         console.log("on click close")
+         setSelectedLocation(null)
+         setShowDatePicker(false)
+         setShowRecentVisitors(true)
+         setInfoBoxOffset(-40)
+      }}
       >
-       <LocationDetail auth={auth} getLocationData={getLocationData} setSelectedLocation={setSelectedLocation} selectedLocation={selectedLocation}
-       setInfoBoxOffset={setInfoBoxOffset}
-       />
+       <LocationDetail auth={auth}/>
       </InfoWindow>):null}
       
     </GoogleMap>

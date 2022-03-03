@@ -7,10 +7,9 @@ import { LocationContext } from "./LocationContext";
 
 export default function ReactDayPicker(props) {
   const{setShowDatePicker,setShowRecentVisitors}=useContext(DisplayContext)
-  const{setInfoBoxOffset}=useContext(LocationContext)
 
-  const {location, getLocationData, setSelectedLocation}=props;
-
+  const {selectedLocation,getLocationData, setSelectedLocation, setInfoBoxOffset} = useContext(LocationContext)
+ 
   const [selectedDay,setSelectedDay]= useState(new Date())
 
   const handleDayClick = (day,{selected}) => {
@@ -20,7 +19,7 @@ export default function ReactDayPicker(props) {
 
 const addLocation =  async (e) => {
   e.preventDefault();
-  const locData = {id:location._id,date:selectedDay}
+  const locData = {id:selectedLocation._id,date:selectedDay}
   await axios.post('/api/geo/addpastlocation',locData, { withCredentials: true })
   .then((response) => { 
     getLocationData()
