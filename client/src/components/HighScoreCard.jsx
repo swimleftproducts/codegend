@@ -14,7 +14,7 @@ function HighScoreCard(props) {
   },[])
  
    async function getHighScores(){
-     let response = await axios('/api/highscore/')
+     let response = await axios('/api/analytics/highscore/5')
      let highScores = await response.data
      
      setHighScores(highScores)

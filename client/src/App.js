@@ -5,11 +5,12 @@ import LoginCard from './components/LoginCard';
 import RegisterCard from './components/RegisterCard'
 import HighScoreCard from './components/HighScoreCard';
 import Map from './components/Map';
+import Dashboard from './components/Dashboard';
 import {DisplayContext} from './components/DisplayContext'
 
 function App() {
 
-  const {setShowRegister,showRegister, showLogin,setShowLogin,setShowHighScore, showHighScore} = useContext(DisplayContext )
+  const {setShowRegister,showRegister, showLogin,setShowLogin,setShowHighScore, showHighScore, setShowDashboard, showDashboard} = useContext(DisplayContext )
 
   //const[showLogin,setShowLogin]= useState(false)
   //const[showRegister,setShowRegister]= useState(false)
@@ -38,6 +39,10 @@ function App() {
     setShowLogin(false)
     setShowRegister(!showRegister)
   }
+
+  const toggleDashboard=(e) => { 
+    setShowDashboard((prevState)=>{return !prevState})
+   }
   const logout = async (e) => {
     let response = await axios('/api/auth/logout')
     if(!response.data.authenticated){
@@ -51,7 +56,7 @@ function App() {
       <div className="App">
         {showRegister || showLogin?<div className="modal-active " onClick={()=>{setShowRegister(false); setShowLogin(false)}}>modal</div>:null}
 
-        {auth.authenticated?<button className="btn login-btn-secondary register-btn " disabled >{auth.name}</button>:null}
+        {auth.authenticated?<button className="btn login-btn-secondary register-btn " onClick={toggleDashboard} >{auth.name}</button>:null}
 
         <button className="btn login-btn-primary login-btn" onClick={toggleLogin}>Login</button>
 
@@ -59,8 +64,8 @@ function App() {
 
         {!auth.authenticated?<button className="btn login-btn-secondary register-btn" onClick={toggleRegister}>Register</button>:null}
 
+        {showDashboard?<Dashboard/>:null}
         {showLogin?<LoginCard setAuth={setAuth} />:null}
-
         {showRegister?<RegisterCard setAuth={setAuth}/>:null}
         {showHighScore?<HighScoreCard />:<i className="highscore-icon bi bi-bar-chart-fill" onClick={()=>{setShowHighScore(true)}}></i>}
         <Map auth={auth}/>

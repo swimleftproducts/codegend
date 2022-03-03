@@ -389,3 +389,40 @@ button {
   padding: 0px;
   text-align: center;
 }
+
+.dashboard{
+  position: absolute;
+  width:520px;
+  height: 800px;
+  z-index: 10;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left:50%;
+  border-radius: 4px;
+  display: flex;
+  padding: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+}
+
+.dashboard-small{
+  width: 230px;
+  height: 200px;
+  border: 1px green solid;
+}
+.dashboard-large{
+  width: 460px;
+  height: 300px;
+  border: 1px green solid;
+}
+.dashboard-med{
+  width: 230px;
+  height: 400px;
+  border: 1px green solid;
+}
+
+.chart{
+  background-color: rgb(230, 232, 233);
+}
