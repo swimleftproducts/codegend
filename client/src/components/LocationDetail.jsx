@@ -1,5 +1,4 @@
-import React,{useState,useEffect, useContext} from 'react'
-import axios from 'axios'
+import React,{ useContext} from 'react'
 import VisitButtons from './VisitButtons';
 import DatePicker from './DatePicker'
 import RecentVisitors from './RecentVisitors';
@@ -14,23 +13,6 @@ function LocationDetail(props) {
 
   const {auth}=props
   
-  const [hasVisited,setHasVisited]=useState(false);
-  
- 
-  useEffect(() => {
-    selectedLocation.visitedBy.forEach(visitor=>{
-      if(visitor.userId===auth.id){
-        setHasVisited(true)
-      }else{
-        setHasVisited(false)
-      }
-    })
-    if(selectedLocation.visitedBy.length===0){
-      setHasVisited(false)
-    }
-  },[auth.id,selectedLocation])
-
-
   return (
     <div className={` location-detail`}>
       {/* This is the label */}
@@ -39,7 +21,7 @@ function LocationDetail(props) {
         <div className="title">{selectedLocation.title}</div>   
       </div> 
 
-      {auth.authenticated?<VisitButtons/>:null}
+      {auth.authenticated?<VisitButtons auth={auth}/>:null}
       {showRecentVisitors?<RecentVisitors/>:null}
       {showDatePicker?<DatePicker/>:null}
 

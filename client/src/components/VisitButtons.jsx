@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import axios from 'axios'
 import { DisplayContext } from './DisplayContext'
 import { LocationContext } from './LocationContext'
@@ -6,10 +6,28 @@ import { LocationContext } from './LocationContext'
 function VisitButtons(props) {
   const{setShowRecentVisitors,showDatePicker,setShowDatePicker}=useContext(DisplayContext)
   const{setInfoBoxOffset, getLocationData, selectedLocation, setSelectedLocation}=useContext(LocationContext)
+
+  const [hasVisited,setHasVisited]= useState(false)
+  const {auth}=props
  
+  useEffect(() => { 
+    if(selectedLocation.visitedBy.length===0){  
+      setHasVisited(false)
+    }else {
+      selectedLocation.visitedBy.forEach(visitor=>{
+        if(visitor.userId===auth.id){
+          setHasVisited(true)
+        }else{
+          setHasVisited(false)
+        }
+      })
+    }
+    
+  },[auth.id,selectedLocation])
 
   const checkOff=async ()=>{
     const locData = {id:selectedLocation._id}
+    console.log('visitbutn', locData);
     await axios.post('/api/geo/addlocation',locData, { withCredentials: true })
     .then((response) => { 
       if(response.data.saved===false){
@@ -40,8 +58,8 @@ function VisitButtons(props) {
   return (
     <div className="visit-btn-box">
        
-    <button className="visit-btn-today" onClick={checkOff}>Visited today</button>
-    <button className="visit-btn-past" onClick={pickDate}>Visited in past</button>
+    <button className={`${hasVisited?"btn-today-disabled":null} visit-btn-today`} disabled={hasVisited?true:false} onClick={checkOff} >{hasVisited?"Already Visited":"Visited today?"}</button>
+    <button className="visit-btn-past" onClick={pickDate}>{hasVisited?"Change date":"Visited in past"}</button>
   
     </div>
   )

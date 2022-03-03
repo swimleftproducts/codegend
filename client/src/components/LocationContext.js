@@ -1,4 +1,4 @@
-import React, {useState,createContext, Children} from 'react'
+import React, {useState,createContext } from 'react'
 import axios from 'axios';
 export const LocationContext = createContext();
 
@@ -12,13 +12,12 @@ export const LocationProvider = (props) => {
   const[selectedLocation,setSelectedLocation]=useState(null)
   const[infoBoxOffset,setInfoBoxOffset]=useState(-40);
 
-
   async function getLocationData(){
-   
     let response = await axios('/api/geo/markers')
     let markers = await response.data
     setLocations(markers)
   }
+
 
   return(
     <LocationContext.Provider value={{getLocationData,infoBoxOffset,setInfoBoxOffset, locations,setLocations, mapCenter,setMapCenter,selectedLocation,setSelectedLocation}}>

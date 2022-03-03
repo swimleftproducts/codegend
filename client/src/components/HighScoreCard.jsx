@@ -57,14 +57,3 @@ function HighScoreCard(props) {
 
 export default HighScoreCard
 
-{/* <table className="table">
-<thead>
-  <tr>
-    <th scope="col"># visited</th>
-    <th scope="col">Name</th>
-  </tr>
-</thead>
-<tbody>
-    {highScores?listHighScores():null}    
-</tbody>
-</table> */}

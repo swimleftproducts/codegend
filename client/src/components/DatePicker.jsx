@@ -14,12 +14,13 @@ export default function ReactDayPicker(props) {
 
   const handleDayClick = (day,{selected}) => {
     const date = new Date(day)
-    setSelectedDay(selected?undefined:date)
+    setSelectedDay(date)
   }
 
 const addLocation =  async (e) => {
   e.preventDefault();
   const locData = {id:selectedLocation._id,date:selectedDay}
+  console.log('locData',locData);
   await axios.post('/api/geo/addpastlocation',locData, { withCredentials: true })
   .then((response) => { 
     getLocationData()

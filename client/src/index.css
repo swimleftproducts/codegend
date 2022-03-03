@@ -179,6 +179,16 @@ body {
 .visit-btn-today {
   border-radius: 4px 0px 0px 4px !important;
 }
+.btn-today-disabled{
+ background-color: #282b3483;
+ color:white;
+ border: none;
+}
+.btn-today-disabled:hover{
+  background-color: #282b3483 !important;
+  color:white !important;
+  border: none !important;
+ }
 
 .visit-btn-past {
   border-radius: 0px 4px 4px 0px !important;

@@ -8,10 +8,11 @@ import {
 import LocationDetail from './LocationDetail';
 import { LocationContext } from './LocationContext';
 import {DisplayContext} from './DisplayContext'
+import axios from 'axios';
 
 
 function Map(props) {
-  const {getLocationData, selectedLocation, setSelectedLocation, mapCenter,  locations, infoBoxOffset,setInfoBoxOffset} = useContext(LocationContext)
+  const { selectedLocation, setSelectedLocation, mapCenter,  locations, setLocations, infoBoxOffset,setInfoBoxOffset} = useContext(LocationContext)
   const{setShowDatePicker,setShowRecentVisitors} = useContext(DisplayContext)
 
 
@@ -20,7 +21,14 @@ function Map(props) {
   useEffect(() => {  
   //from LocationContext
    getLocationData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
+
+  async function getLocationData(){
+    let response = await axios('/api/geo/markers')
+    let markers = await response.data
+    setLocations(markers)
+  }
 
    const {isLoaded,loadError}= useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
@@ -56,7 +64,7 @@ function Map(props) {
           lat:location.lat, 
           lng:location.lng
         }} 
-        onClick={() => { setSelectedLocation(location)}}/>
+        onClick={() => {setSelectedLocation(location)}}/>
       }
     )}
     {selectedLocation ?(<InfoWindow 
@@ -68,7 +76,7 @@ function Map(props) {
        }}
        
        onCloseClick={() => {
-         console.log("on click close")
+         
          setSelectedLocation(null)
          setShowDatePicker(false)
          setShowRecentVisitors(true)

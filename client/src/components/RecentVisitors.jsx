@@ -1,7 +1,7 @@
 import React,{useContext} from 'react'
 import { LocationContext } from "./LocationContext";
 
-function RecentVisitors(props) {
+function RecentVisitors() {
 
   const {selectedLocation} = useContext(LocationContext)
 

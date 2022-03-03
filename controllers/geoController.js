@@ -7,14 +7,14 @@ module.exports={
     Location.find({}).lean()
     .then((data) => { 
      
-      const returnData = data.map((location) => { 
-        location.visitedBy = location.visitedBy.map((visitor) => { 
-              return {name: visitor.name, userId: visitor._id, date:visitor.date}
-        })
-        return location
-      })
+      // const returnData = data.map((location) => { 
+      //   location.visitedBy = location.visitedBy.map((visitor) => { 
+      //         return {name: visitor.name, userId: visitor._id, date:visitor.date}
+      //   })
+      //   return location
+      // })
 
-      res.send(returnData)
+      res.send(data)
      })    
   },
   async addLocation(req,res,next){
@@ -27,15 +27,14 @@ module.exports={
         visited=true
       }
     })
-    if(visited){
-      
+    if(visited){      
       res.send({saved:false,message:"already visited"})
       return
     }
     //add user to the visited site
     let location= await Location.findById(req.body.id)
     //original code
-    console.log(req.user.name)
+  
     await location.visitedBy.unshift({date: new Date(),userId:req.user.id,name:req.user.name})
     
     await user.locationsVisited.push(req.body.id)
@@ -43,7 +42,7 @@ module.exports={
 
     const returnLocation = await location.save()
     
-    //update return location with visted by 
+    
 
 
     //original code
@@ -56,7 +55,6 @@ module.exports={
   async addPastLocation(req,res,next){
     let user = await User.findById(req.user._id).exec()
     //check if visited before
-
     let visited=false
  
     user.locationsVisited.map((location)=>{
@@ -72,8 +70,9 @@ module.exports={
       const revisedVisitedBy = location.visitedBy.map((visitor) => { 
         
         if(visitor.userId.toString()===req.user.id){
-       
-          return {date: new Date(req.body.date),userId:req.user.id,name:req.user.name}
+          const newData = {date: new Date(req.body.date),userId:req.user.id,name:req.user.name}
+          console.log("updateroute",newData)
+          return newData;
         }
         else{
           return visitor
@@ -86,6 +85,7 @@ module.exports={
 
       Location.findById(req.body.id).lean()
       .then((data) => { 
+        console.log(data)
         res.send(data)
       })  
    
@@ -99,7 +99,8 @@ module.exports={
       const returnLocation = await location.save()
 
       Location.findById(req.body.id).lean()
-      .then((data) => { 
+      .then((data) => {
+        console.log(data) 
         res.send(data)
       })  
      
