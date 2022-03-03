@@ -1,11 +1,9 @@
-import React, {useState, useEffect,useContext} from 'react'
-import axios from 'axios';
+import React, { useEffect,useContext} from 'react'
 import {
   GoogleMap,
   useLoadScript,
   Marker,
   InfoWindow,
-  InfoBox
 } from '@react-google-maps/api'
 import LocationDetail from './LocationDetail';
 import { LocationContext } from './LocationContext';

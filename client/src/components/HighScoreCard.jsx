@@ -1,8 +1,9 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState,useContext,useEffect} from 'react'
 import axios from 'axios'
+import {DisplayContext} from './DisplayContext'
 
 function HighScoreCard(props) {
-  const {setShowHighScore}=props
+  const{setShowHighScore} = useContext(DisplayContext)
   const [highScores,setHighScores]= useState()
 
   const hide = () => {
