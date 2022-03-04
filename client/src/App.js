@@ -36,6 +36,8 @@ function App() {
     let response = await axios('/api/auth/logout')
     if(!response.data.authenticated){
       setAuth({})
+      setShowDashboard(false)
+      setShowHighScore(false)
     }
   }
 

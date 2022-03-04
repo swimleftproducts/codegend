@@ -65,10 +65,11 @@ function Charts() {
   })
 
   function prepChartData(){
-    if(info.monthlyData){
-        let labels=info.monthlyData.months
-        let monthlyData=info.monthlyData.data
-        let cumulativeData=info.cumulativeData.data
+    
+    if(info.userStats){
+        let labels=info.userStats.monthlyData.months
+        let monthlyData=info.userStats.monthlyData.data
+        let cumulativeData=info.userStats.cumulativeData.data
         chart(labels,monthlyData,cumulativeData)
     }
   }
@@ -98,7 +99,6 @@ function Charts() {
   }
   useEffect(() => { 
     prepChartData()
-    // getUserStats()
   },[info])
 
 

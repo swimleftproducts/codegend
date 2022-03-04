@@ -417,7 +417,6 @@ button {
   justify-content: space-between;
 }
 .dashboard-title-item{
- 
   padding: 5px;
   width: 48%;
   text-align: start;
@@ -454,10 +453,13 @@ button {
 .dashboard-med-left{
   margin: 5px 5px 0px 0px;
   overflow-y: scroll;
+  background-color: var(--primary-color);
   
 }
 .dashboard-med-right{
   margin: 5px 0px 0px 5px;
+  overflow-y: scroll;
+  background-color: var(--secondary-color);
 }
 
 
@@ -474,11 +476,12 @@ button {
 
 .my-recent-visits{
   width: 100%;
-  background-color: var(--primary-color);
+  height: 100%;
+  
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: start;
   padding: 4px;
 }
 .my-recent-visits-title{
@@ -503,7 +506,7 @@ button {
   width: 100%;
 }
 .my-recent-visits-entry p:first-of-type{
-  text-align: center;
+  text-align: start;
   font-size: 10px;
   width: 65%;
 }

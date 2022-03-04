@@ -5,8 +5,9 @@ import Charts from './dashboard/Chart'
 import Title from './dashboard/Title'
 import MyRecentVisits from './dashboard/MyRecentVisits'
 import { UserStatsContext } from './UserStatsContext'
-
-
+import OtherRecentVisits from './dashboard/OtherRecentVisits'
+import Leaderboard from './dashboard/Leaderboard'
+import QuickInfo from './dashboard/QuickInfo'
 
 function Dashboard() {
  
@@ -21,11 +22,11 @@ function Dashboard() {
   return (
     <div className='dashboard'>
       <div className='dashboard-title '><Title/></div>
-      <div className='dashboard-small dashboard-small-left'> Quick Info</div>
-      <div  className='dashboard-small dashboard-small-right'> Leaderboard</div>
+      <div className='dashboard-small dashboard-small-left'> <QuickInfo/></div>
+      <div  className='dashboard-small dashboard-small-right'> <Leaderboard/></div>
       <div className='dashboard-large'><Charts/></div>
       <div className='dashboard-med dashboard-med-left'><MyRecentVisits/></div>
-      <div className='dashboard-med dashboard-med-right'>Other recent visits</div>
+      <div className='dashboard-med dashboard-med-right'><OtherRecentVisits/></div>
       <div className='close-icon mt-2' >
         <div className='' onClick={()=>{
          
