@@ -12,11 +12,11 @@ function Dashboard() {
 
   return (
     <div className='dashboard'>
-      <div className='dashboard-small'> Quick Info</div>
-      <div  className='dashboard-small'> Leaderboard</div>
+      <div className='dashboard-small dashboard-small-left'> Quick Info</div>
+      <div  className='dashboard-small dashboard-small-right'> Leaderboard</div>
       <div className='dashboard-large'><Charts/></div>
-      <div className='dashboard-med'>recent visits</div>
-      <div className='dashboard-med'>Other recent visits</div>
+      <div className='dashboard-med dashboard-med-left'>recent visits</div>
+      <div className='dashboard-med dashboard-med-right'>Other recent visits</div>
       <div className='close-icon mt-2' >
         <div className='' onClick={()=>{
          
