@@ -17,7 +17,7 @@ function Title() {
      Hello {auth.name}
     </div>,
     <div key="2" className='dashboard-title-item'>
-      Today is {todayDate()}
+      Info as of {todayDate()}
     </div>
     ]
   )

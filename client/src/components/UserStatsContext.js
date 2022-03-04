@@ -13,7 +13,7 @@ export const UserStatsProvider = (props) => {
     let othersVisits= await response2.data
     let response3 = await axios('/api/analytics/highscore/3')
     let leaderboard= await response3.data
-    console.log({userStats,othersVisits,leaderboard})
+   
     setInfo({userStats,othersVisits,leaderboard})
   }
 

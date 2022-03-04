@@ -46,6 +46,9 @@ ChartJS.register(
     y:{
       grid:{
         display:false
+      },
+      ticks:{
+        precision:0
       }
     }
   },
