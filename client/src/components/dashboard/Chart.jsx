@@ -1,5 +1,6 @@
- import React, {useEffect,useState} from 'react';
+ import React, {useEffect,useContext,useState} from 'react';
  import axios from 'axios';
+ import { UserStatsContext } from '../UserStatsContext';
  import {Line, Bar, Chart} from 'react-chartjs-2'
  import {
   Chart as ChartJS,
@@ -33,7 +34,7 @@ ChartJS.register(
     },
     title: {
       display: true,
-      text: 'Visits Per Month',
+      text: 'Your Visits',
     }
   },
   scales:{
@@ -55,27 +56,21 @@ ChartJS.register(
 
 
 function Charts() {
-  const [info,setInfo]=useState({})
+
+  const{info}=useContext(UserStatsContext)
+ 
   const [chartData, setChartData]=useState({
     labels: [],
-      datasets: [
-        {
-         
-        },
-        {
-         
-        },
-      ],
+    datasets: [{},{}],
   })
 
-  async function getUserStats(){
-    let response = await axios('/api/analytics/userStats/622161f2f5d6d6e7587e0c33/6')
-    let userStats= await response.data
-    let labels=userStats.monthlyData.months
-    let monthlyData=userStats.monthlyData.data
-    let cumulativeData=userStats.cumulativeData.data
-    setInfo(userStats)
-    chart(labels,monthlyData,cumulativeData)
+  function prepChartData(){
+    if(info.monthlyData){
+        let labels=info.monthlyData.months
+        let monthlyData=info.monthlyData.data
+        let cumulativeData=info.cumulativeData.data
+        chart(labels,monthlyData,cumulativeData)
+    }
   }
 
   const chart =(labels,monthlyData,cumulativeData) =>{
@@ -93,7 +88,7 @@ function Charts() {
         },
         {
           type:"bar",
-          label: 'Dataset 2',
+          label: 'Monthly Visits',
           data: monthlyData,
           borderColor: '#424ead',
           backgroundColor: '#424ead',
@@ -102,8 +97,9 @@ function Charts() {
     })
   }
   useEffect(() => { 
-    getUserStats()
-  },[])
+    prepChartData()
+    // getUserStats()
+  },[info])
 
 
 

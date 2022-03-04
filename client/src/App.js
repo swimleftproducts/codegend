@@ -7,29 +7,18 @@ import HighScoreCard from './components/HighScoreCard';
 import Map from './components/Map';
 import Dashboard from './components/Dashboard';
 import {DisplayContext} from './components/DisplayContext'
+import { AuthContext } from './components/AuthContext';
 
 function App() {
 
   const {setShowRegister,showRegister, showLogin,setShowLogin,setShowHighScore, showHighScore, setShowDashboard, showDashboard} = useContext(DisplayContext )
 
-  //const[showLogin,setShowLogin]= useState(false)
-  //const[showRegister,setShowRegister]= useState(false)
-  //const[showHighScore,setShowHighScore]= useState(false)
-  const[auth,setAuth]=useState({authenticated:false,name:null})
+  const {auth,setAuth,getLoginStatus}=useContext(AuthContext)
   
-
   //check login status
   useEffect(() => { 
     getLoginStatus()
   },[])
-
-  async function getLoginStatus(){
-    let response = await axios('/api/auth/isAuthenticated')
-    
-    if(response.data.authenticated){
-      setAuth(response.data)
-    }
-  }
 
   const toggleLogin =(e) => {
     setShowRegister(false)
