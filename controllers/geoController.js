@@ -6,15 +6,7 @@ module.exports={
     //get all locations
     Location.find({}).lean()
     .then((data) => { 
-     
-      // const returnData = data.map((location) => { 
-      //   location.visitedBy = location.visitedBy.map((visitor) => { 
-      //         return {name: visitor.name, userId: visitor._id, date:visitor.date}
-      //   })
-      //   return location
-      // })
-
-      res.send(data)
+       res.send(data)
      })    
   },
   async addLocation(req,res,next){

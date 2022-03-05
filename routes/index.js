@@ -2,7 +2,7 @@
 //add routes
 const authController = require('../controllers/authController.js')
 const geoController = require('../controllers/geoController.js')
-const highScoreController = require('../controllers/highScoreController.js')
+const analyticsController = require('../controllers/AnalyticsController.js')
 const setupController = require('../controllers/setupController.js')
 
 const {ApiError} = require('../errorHandling/errorHandler')
@@ -20,8 +20,10 @@ module.exports= (app) => {
     app.get('/api/auth/logout',authController.logout)
     app.get('/api/auth/isauthenticated',authController.isAuthenticated)
 
-    //score related routes
-    app.get('/api/highscore/',highScoreController.getHighScores)
+    //stats related routes
+    app.get('/api/analytics/highscore/:number?',analyticsController.getHighScores)
+    app.get('/api/analytics/userStats/:id/:months?',checkAuthenticated,analyticsController.userStats)
+    app.get('/api/analytics/recentVisits/:number?',checkAuthenticated,analyticsController.recentVisits)
 
     //Geo related routes
     app.get('/api/geo/markers',geoController.markers)

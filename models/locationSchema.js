@@ -23,7 +23,9 @@ const locationSchema = new Schema({
         type: Date
       }
     }
-    ]
-})
+    ],
+ 
+  
+},{timestamps:true})
 
 module.exports = locationSchema

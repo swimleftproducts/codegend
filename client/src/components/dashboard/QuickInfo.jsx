@@ -15,7 +15,7 @@ function QuickInfo() {
   }
 
   return (
-    <div>
+    <div className='quickInfo'>
       {renderInfo()}
     </div>
   )

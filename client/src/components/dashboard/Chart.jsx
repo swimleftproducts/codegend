@@ -94,9 +94,10 @@ function Charts() {
           type:"bar",
           label: 'Monthly Visits',
           data: monthlyData,
-          borderColor: '#424ead',
-          backgroundColor: '#424ead',
-        },
+          borderColor: '#B9C3FF',
+          backgroundColor: '#b9c3ff',
+          borderWidth: 3,
+        }, 
       ],
     })
   }

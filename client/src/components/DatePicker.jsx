@@ -14,6 +14,7 @@ export default function ReactDayPicker(props) {
 
   const handleDayClick = (day,{selected}) => {
     const date = new Date(day)
+    console.log("pickerdate",date.getMonth())
     setSelectedDay(date)
   }
 

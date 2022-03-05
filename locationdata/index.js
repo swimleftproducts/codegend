@@ -1,6 +1,5 @@
 const locations=[
   {
-  
     title: "WEST RIVER TRAILHEAD - PARKING LOT- GUNNISON GORGE",
     lat:38.78068,
     lng:-107.83664,
@@ -21,27 +20,27 @@ const locations=[
     lat:38.79778,
     lng: -107.85415,
    },
-  // {
-  //   title: "SMITH MOUNTAIN PARKING LOT - GUNNISON GORGE",
-  //   lat:38.75417,
-  //   lng: -107.90846,
+  {
+    title: "SMITH MOUNTAIN PARKING LOT - GUNNISON GORGE",
+    lat:38.75417,
+    lng: -107.90846,
     
-  // },
-  // {
-  //   title: "ESCALANTE RIM ROAD PARKING LOT",
-  //   lat:38.71201,
-  //   lng:-108.17298,
-  // },
-  // {
-  //   title: "ESCALANTE RIM ROAD DRY FORK OVERLOOK",
-  //   lat:38.70073,
-  //   lng:-108.25525,
-  // },
-  // {
-  //   title: "GORE RANCH CORRALS - SAWMILL MESA ROAD",
-  //   lat:38.70224,
-  //   lng:-108.17690,
-  // },	
+  },
+  {
+    title: "ESCALANTE RIM ROAD PARKING LOT",
+    lat:38.71201,
+    lng:-108.17298,
+  },
+  {
+    title: "ESCALANTE RIM ROAD DRY FORK OVERLOOK",
+    lat:38.70073,
+    lng:-108.25525,
+  },
+  {
+    title: "GORE RANCH CORRALS - SAWMILL MESA ROAD",
+    lat:38.70224,
+    lng:-108.17690,
+  },	
   // {
   //   title: "DRY MESA ROAD PETROGLYPHS - DRY FORK ESCALANTE CREEK",
   //   lat:38.71013,
