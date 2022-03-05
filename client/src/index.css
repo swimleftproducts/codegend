@@ -427,8 +427,7 @@ button {
   background-color: white;
   width: 48%;
   height: 150px;
-  border: green 2px solid;
-  margin: 7px 0px 7px 0px;
+  margin: 7px 0px;
 }
 @media screen and (max-width: 360px) {
   .dashboard {
@@ -487,8 +486,8 @@ button {
   height: 100%;
 }
 
-.chart {
-}
+/* .chart {
+} */
 
 .my-recent-visits {
   width: 100%;
@@ -532,10 +531,21 @@ button {
 }
 
 .quickInfo {
-  border: 2px red solid;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+}
+
+.bi-award-fill {
+  color: var(--secondary-color)!important;
+}
+.quick-info-label {
+  width: 100%!important;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
 }
