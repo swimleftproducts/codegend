@@ -385,7 +385,7 @@ button {
 .dashboard {
   position: absolute;
   width: 520px;
-  height: 800px;
+  height: 820px;
   z-index: 10;
   background-color: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(8px);
@@ -445,14 +445,19 @@ button {
   }
   .dashboard-title {
     height: 80px;
-
   }
   .dashboard-title-item {
     width: 100% !important ;
     height: 40px !important;
     text-align: left !important;
   }
-
+  .location-detail {
+    width: 100%;
+  }
+  .gm-style-iw,
+  .gm-style-iw-c {
+    max-width:300px !important;
+  }
 }
 
 .dashboard-large {
