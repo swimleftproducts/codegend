@@ -1,32 +1,36 @@
-import React, { useContext } from 'react'
-import { UserStatsContext } from '../UserStatsContext'
+import React, { useContext } from 'react';
+import { UserStatsContext } from '../UserStatsContext';
 
-function QuickInfo() {
-  const { info } = useContext(UserStatsContext)
+function QuickInfo () {
+  const { info } = useContext(UserStatsContext);
 
   const renderInfo = () => {
     if (info.userStats) {
       return (
-        <div className='container-fluid'>
-          <div className='quick-info-label'>
-            <span class="bi-award-fill"></span>
-            <h6>Total Visits</h6>
-          </div>
+        // <div className='dashboard-label'>
 
-          <p>{info.userStats.cumulativeData.data[5]} / {info.userStats.numLocations}</p>
+        <div className='quick-info-value'>
+          <h4>{ info.userStats.cumulativeData.data[5] }</h4>
+          <h4>/</h4>
+          <h4>{ info.userStats.numLocations }</h4>
         </div>
+        // </div>
 
-      )
+      );
     } else {
-      return ("Loading")
+      return ("Loading");
     }
-  }
+  };
 
   return (
     <div className='quickInfo'>
-      {renderInfo()}
+      <div className='dashboard-label-container'>
+        <i class="bi bi-award-fill"></i>
+        <h5>Total Visits</h5>
+      </div>
+      { renderInfo()}
     </div>
-  )
+  );
 }
 
-export default QuickInfo
+export default QuickInfo;

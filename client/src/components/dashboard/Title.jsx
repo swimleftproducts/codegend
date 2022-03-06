@@ -14,10 +14,10 @@ function Title() {
   return (
     [
     <div key="1" className='dashboard-title-item'>
-     Hello {auth.name}
+     <h5>Hello {auth.name}</h5>
     </div>,
     <div key="2" className='dashboard-title-item title-2'>
-      Info as of {todayDate()}
+     <h5>Info as of {todayDate()}</h5>
     </div>
     ]
   )
