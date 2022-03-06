@@ -553,7 +553,7 @@ button {
   padding: 8px;
 }
   
-.bi-award-fill,.bi-bar-chart-fill {
+.bi-award-fill,.leaderboard-icon {
   color: var(--secondary-color)!important;
   font-size: 24px;
 }

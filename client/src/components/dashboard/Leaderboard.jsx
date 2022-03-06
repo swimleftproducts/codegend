@@ -29,7 +29,7 @@ function Leaderboard () {
   return (
     <div className="leaderboard">
       <div className='dashboard-label-container'>
-        <i class="bi bi-bar-chart-fill"></i>
+        <i class="bi bi-bar-chart-fill leaderboard-icon"></i>
         <h5>Leader Board</h5>
       </div>
       { renderLeaderboard() }
