@@ -19,8 +19,11 @@ function Dashboard() {
   }, []);
 
   return (
+    
     <div className="dashboard">
-      <div className="dashboard-title ">
+      <div className='dashboard-coverup sticky-top'></div>
+      {/** <MobileNav/>**/}
+      <div className="dashboard-title sticky-top">
         <Title />
       </div>
       <div className="dashboard-small dashboard-small-left">
@@ -40,7 +43,7 @@ function Dashboard() {
       <div className="dashboard-med dashboard-med-right">
         <OtherRecentVisits />
       </div>
-      <div className="close-icon mt-2">
+      <div className="close-icon mt-2 ">
         <div
           className=""
           onClick={() => {
@@ -51,6 +54,18 @@ function Dashboard() {
           <p>close</p>
         </div>
       </div>
+      <div className="close-icon-mobile sticky-bottom mt-2 ">
+        <div
+          className=""
+          onClick={() => {
+            setShowDashboard(false);
+          }}
+        >
+          <i className="bi bi-caret-up-fill "></i>
+          <p>close</p>
+        </div>
+      </div>
+
     </div>
   );
 }

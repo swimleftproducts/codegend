@@ -13,7 +13,7 @@ function Title() {
   
   return (
     [
-    <div key="1" className='dashboard-title-item'>
+    <div key="1" id='dashboardTitle' className='dashboard-title-item'>
      <h5>Hello {auth.name}</h5>
     </div>,
     <div key="2" className='dashboard-title-item title-2'>
