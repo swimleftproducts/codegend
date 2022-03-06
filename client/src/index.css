@@ -4,6 +4,11 @@
   --white-text: #ffffff;
 }
 
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
 body {
   background-color: teal;
   padding: 0;
@@ -403,7 +408,7 @@ button {
 }
 .dashboard-title {
   width: 100%;
-  height: 40px;
+  min-height: 40px;
   border: var(--secondary-color) 2px solid;
   margin-bottom: 5px;
   display: flex;
@@ -412,23 +417,30 @@ button {
   flex-wrap: wrap;
   color: white;
   background-color: var(--secondary-color);
+  padding: 4px;
 }
 .dashboard-title-item {
-  padding: 5px;
-  width: 48%;
-  text-align: start;
+  display: flex;
+  align-items: center;
+  width: 50%;
   height: 100%;
   font-size: 20px;
+  
+}
+.dashboard-title-item h5 {
+  line-height: 20px;
+  margin: 0px;
+  padding: 0px;
 }
 .title-2 {
-  text-align: end;
+  display: flex;
+  justify-content: end;
 }
 .dashboard-small {
   background-color: white;
   width: 48%;
   height: 150px;
-  border: green 2px solid;
-  margin: 7px 0px 7px 0px;
+  margin: 7px 0px;
 }
 @media screen and (max-width: 360px) {
   .dashboard {
@@ -492,8 +504,8 @@ button {
   height: 100%;
 }
 
-.chart {
-}
+/* .chart {
+} */
 
 .my-recent-visits {
   width: 100%;
@@ -536,11 +548,73 @@ button {
   width: 30%;
 }
 
-.quickInfo {
-  border: 2px red solid;
+.quickInfo, .leaderboard {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: solid var(--secondary-color) 2px;
+  padding: 8px;
+}
+  
+.bi-award-fill,.leaderboard-icon {
+  color: var(--secondary-color)!important;
+  font-size: 24px;
+}
+.dashboard-label-container {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 4px;
+  border-bottom: solid var(--secondary-color) 1px;
+}
+
+.dashboard-label-container h5 {
+  display: block;
+  position: relative;
+  top: 4px;
+  line-height: 24px;
+  margin: 0%;
+  padding: 0%;
+}
+
+.quick-info-value {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 16px;
+  position: relative;
+  top: 4px;
+}
+.quick-info-value h4{
+  width: 33%;
+  text-align: center;
+
+}
+.leaderboard-container {
+  width: 100%;
+  padding: 0px 8px;
+  display: flex;
+  align-items: center;
+}
+.leaderboard-value {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  line-height: 10px;
+  position: relative;
+  top: 4px;
+}
+.leaderboard-value p {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0%;
+  padding: 8px;
 }
