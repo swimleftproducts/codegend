@@ -1,24 +1,24 @@
-import React, {useContext} from 'react'
-import { UserStatsContext } from '../UserStatsContext'
+import React, { useContext } from 'react';
+import { UserStatsContext } from '../UserStatsContext';
 
 function QuickInfo() {
-  const {info}= useContext(UserStatsContext)
+  const { info } = useContext(UserStatsContext);
 
-  const renderInfo =()=>{
-    if(info.userStats){
-      return(
-        <p> Total Visits {info.userStats.cumulativeData.data[5]} / {info.userStats.numLocations}</p>
-      )
-    }else{
-      return("Loading")
+  const renderInfo = () => {
+    if (info.userStats) {
+      return (
+        <p>
+          {' '}
+          Total Visits {info.userStats.cumulativeData.data[5]} /{' '}
+          {info.userStats.numLocations}
+        </p>
+      );
+    } else {
+      return 'Loading';
     }
-  }
+  };
 
-  return (
-    <div className='quickInfo'>
-      {renderInfo()}
-    </div>
-  )
+  return <div className="quickInfo">{renderInfo()}</div>;
 }
 
-export default QuickInfo
+export default QuickInfo;
