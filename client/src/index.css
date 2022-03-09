@@ -9,6 +9,9 @@
   padding: 0%;
   box-sizing: border-box;
 }
+p{
+  margin: 5px 0px;
+}
 body {
   /* background-color: teal; */
   padding: 0;
@@ -584,8 +587,9 @@ button {
 .my-recent-visits {
   width: 100%;
   height: 100%;
-
+ 
   color: white;
+  
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -607,20 +611,33 @@ button {
   justify-content: space-between;
 }
 
-.my-recent-visits-entry {
+.other-recent-visits-entry, .my-recent-visits-entry {
+ align-items: center;
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
-.my-recent-visits-entry p:first-of-type {
+.my-recent-visits-entry:nth-child(odd) {
+background-color: #494950;
+}
+
+.other-recent-visits-entry:nth-child(odd) {
+  background-color: #5c66b5;
+  }
+.other-recent-visits-entry p:first-of-type ,.my-recent-visits-entry p:first-of-type {
   text-align: start;
   font-size: 10px;
   width: 65%;
 }
-.my-recent-visits-entry p:nth-of-type(2) {
+
+.other-recent-visits-entry p:nth-of-type(2),.my-recent-visits-entry p:nth-of-type(2) {
   font-size: 10px;
   width: 30%;
+  text-align: center;
+  padding: 5px;
 }
+
+
 
 .quickInfo,
 .leaderboard {
@@ -675,6 +692,13 @@ button {
   width: 33%;
   text-align: center;
 }
+.quick-info-value h4:first-child {
+  text-align: end;
+}
+.quick-info-value h4:nth-child(3) {
+  text-align: start
+}
+
 .quick-info-value h5 {
   width: 100%;
   text-align: center;
