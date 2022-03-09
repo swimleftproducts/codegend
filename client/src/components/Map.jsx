@@ -13,7 +13,7 @@ import axios from 'axios';
 
 function Map(props) {
   const { selectedLocation, setSelectedLocation, mapCenter,  locations, setLocations, infoBoxOffset,setInfoBoxOffset} = useContext(LocationContext)
-  const{setShowDatePicker,setShowRecentVisitors} = useContext(DisplayContext)
+  const{setShowDashboard,setShowDatePicker,setShowRecentVisitors} = useContext(DisplayContext)
 
 
   const {auth}=props
@@ -64,7 +64,10 @@ function Map(props) {
           lat:location.lat, 
           lng:location.lng
         }} 
-        onClick={() => {setSelectedLocation(location)}}/>
+        onClick={() => {
+          setShowDashboard(false)
+          setSelectedLocation(location)
+        }}/>
       }
     )}
     {selectedLocation ?(<InfoWindow 
