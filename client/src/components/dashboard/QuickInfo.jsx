@@ -24,7 +24,7 @@ function QuickInfo() {
   return (
     <div className="quickInfo">
       <div className="dashboard-label-container">
-        <i class="bi bi-award-fill"></i>
+        <i className="bi bi-award-fill"></i>
         <h5>User Status</h5>
       </div>
       {renderInfo()}

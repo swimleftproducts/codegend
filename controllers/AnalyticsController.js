@@ -146,7 +146,6 @@ module.exports = {
     let userRanking = 'n/a';
     let rankings = ['1st', '2nd', '3rd'];
     for (let i = 0; i < ranking.length; i++) {
-      console.log(ranking[i]);
       if (ranking[i].name === req.user.name) {
         if (i < 3) {
           userRanking = `${rankings[i]}`;
@@ -156,7 +155,6 @@ module.exports = {
         break;
       }
     }
-    console.log(userRanking);
 
     //convert monthsOfInterest to actual months
     for (let i = 0; i < monthsOfInterest.length; i++) {
@@ -177,7 +175,7 @@ module.exports = {
         months: monthsOfInterest,
         data: cumulativeData,
       },
-      userRanking
+      userRanking,
     };
 
     res.send(userStats);
