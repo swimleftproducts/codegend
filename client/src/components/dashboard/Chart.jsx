@@ -22,7 +22,7 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 const options = {
@@ -85,7 +85,7 @@ function Charts() {
           hoverBorderWidth: 3,
         },
         {
-          type: 'bar',
+          type: 'Bar',
           label: 'Monthly Visits',
           data: monthlyData,
           borderColor: '#B9C3FF',
