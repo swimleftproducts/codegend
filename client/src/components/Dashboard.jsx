@@ -65,6 +65,7 @@ function Dashboard() {
           <p>close</p>
         </div>
       </div>
+      <div className='close-icon-mobile-coverup sticky-bottom'></div>
 
     </div>
   );
