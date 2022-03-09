@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 import axios from 'axios';
 import { UserStatsContext } from '../UserStatsContext';
-import { Line, Bar, Chart } from 'react-chartjs-2';
+import { Line, bar, Chart } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -85,7 +85,7 @@ function Charts() {
           hoverBorderWidth: 3,
         },
         {
-          type: 'Bar',
+          type: 'bar',
           label: 'Monthly Visits',
           data: monthlyData,
           borderColor: '#B9C3FF',
