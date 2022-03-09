@@ -1,7 +1,8 @@
 import React, { useEffect, useContext, useState } from 'react';
 import axios from 'axios';
 import { UserStatsContext } from '../UserStatsContext';
-import { Line, bar, Chart } from 'react-chartjs-2';
+import { Chart } from 'react-chartjs-2';
+import 'chart.js/auto'
 import {
   Chart as ChartJS,
   CategoryScale,
