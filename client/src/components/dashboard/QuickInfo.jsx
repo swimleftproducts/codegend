@@ -1,34 +1,34 @@
 import React, { useContext } from 'react';
 import { UserStatsContext } from '../UserStatsContext';
 
-function QuickInfo () {
+function QuickInfo() {
   const { info } = useContext(UserStatsContext);
 
   const renderInfo = () => {
     if (info.userStats) {
       return (
-        // <div className='dashboard-label'>
-
-        <div className='quick-info-value'>
-          <h4>{ info.userStats.cumulativeData.data[5] }</h4>
+        <div className="quick-info-value">
+          <h4 className=''>{info.userStats.cumulativeData.data[5]}</h4>
           <h4>/</h4>
-          <h4>{ info.userStats.numLocations }</h4>
+          <h4>{info.userStats.numLocations}</h4>
+          <p className='m-0'>locations visited</p>
+          <h5 className='m-0'>You are in {info.userStats.userRanking} place.</h5>
         </div>
-        // </div>
-
+  
       );
     } else {
-      return ("Loading");
+      return 'Loading';
     }
   };
 
   return (
-    <div className='quickInfo'>
-      <div className='dashboard-label-container'>
+    <div className="quickInfo">
+      <div className="dashboard-label-container">
         <i class="bi bi-award-fill"></i>
-        <h5>Total Visits</h5>
+        <h5>User Status</h5>
       </div>
-      { renderInfo()}
+      {renderInfo()}
+     
     </div>
   );
 }

@@ -305,6 +305,7 @@ button {
   line-height: 50px;
   font-size: 40px;
   transform: translate(0%, -50%);
+  border-radius: 0px 5px 5px 0px;
   top: 50%;
   z-index: 10;
   background-color: var(--secondary-color);
@@ -658,18 +659,31 @@ button {
 }
 
 .quick-info-value {
+ 
   width: 100%;
   height: 70%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 16px;
+  padding: 10px;
   position: relative;
   top: 4px;
+  flex-wrap: wrap;
 }
 .quick-info-value h4 {
+  margin: 0px;
   width: 33%;
   text-align: center;
+}
+.quick-info-value h5 {
+  width: 100%;
+  text-align: center;
+  font-size: medium;
+}
+.quick-info-value p {
+  width: 100%;
+  text-align: center;
+  font-size: small;
 }
 .leaderboard-container {
   width: 100%;
