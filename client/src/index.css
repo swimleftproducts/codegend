@@ -730,3 +730,8 @@ background-color: #494950;
   margin: 0%;
   padding: 8px;
 }
+
+.test-name{
+  color:green !important;
+  background-color: blue !important;
+}
