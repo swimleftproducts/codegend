@@ -21,7 +21,8 @@ function Map(props) {
     infoBoxOffset,
     setInfoBoxOffset,
   } = useContext(LocationContext);
-  const { setShowDashboard, setShowDatePicker, setShowRecentVisitors } =
+
+  const { setShowDashboard, setShowDatePicker, setShowRecentVisitors, setShowHighScore } =
     useContext(DisplayContext);
 
   const { auth } = props;
@@ -66,25 +67,27 @@ function Map(props) {
       options={options}
     >
       {locations.map((location) => {
-        let visited =false
+        let visited = false;
         location.visitedBy.forEach((visitor) => {
-        
-          if(auth.id ===visitor.userId){
-             visited=true;
+          if (auth.id === visitor.userId) {
+            visited = true;
           }
-          return 0
-        })
+          return 0;
+        });
         return (
           <Marker
-         
-        
-          key={location._id}
+            key={location._id}
             position={{
               lat: location.lat,
               lng: location.lng,
             }}
-            icon={`${visited?"http://maps.google.com/mapfiles/ms/icons/blue.png":'http://maps.google.com/mapfiles/ms/icons/red.png'}`}
+            icon={`${
+              visited
+                ? 'http://maps.google.com/mapfiles/ms/icons/blue.png'
+                : 'http://maps.google.com/mapfiles/ms/icons/red.png'
+            }`}
             onClick={() => {
+              setShowHighScore(false);
               setShowDashboard(false);
               setSelectedLocation(location);
             }}
