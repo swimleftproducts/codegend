@@ -8,6 +8,7 @@ import Map from './components/Map';
 import Dashboard from './components/Dashboard';
 import { DisplayContext } from './components/DisplayContext';
 import { AuthContext } from './components/AuthContext';
+import { LocationContext } from './components/LocationContext';
 
 function App() {
   const {
@@ -21,6 +22,7 @@ function App() {
     showDashboard,
   } = useContext(DisplayContext);
 
+  const {setSelectedLocation}= useContext(LocationContext)
   const { auth, setAuth, getLoginStatus } = useContext(AuthContext);
 
   //check login status
@@ -38,6 +40,8 @@ function App() {
   };
 
   const toggleDashboard = (e) => {
+    setSelectedLocation(null);
+    setShowHighScore(false);
     setShowDashboard((prevState) => {
       return !prevState;
     });
@@ -102,6 +106,8 @@ function App() {
         <i
           className="highscore-icon bi bi-bar-chart-fill"
           onClick={() => {
+            setSelectedLocation(null);
+            setShowDashboard(false)
             setShowHighScore(true);
           }}
         ></i>

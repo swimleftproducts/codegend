@@ -17,7 +17,7 @@ function OtherRecentVisits() {
     if(info.othersVisits){
       return  info.othersVisits.map((visit,index) => { 
          return(
-         <div key={index} className='my-recent-visits-entry'>
+         <div key={index} className='other-recent-visits-entry'>
              <p >{visit.title}</p>
              <p>{makeDate(visit.date)}</p>
              <p>{visit.name}</p>
