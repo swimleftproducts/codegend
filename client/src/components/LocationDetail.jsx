@@ -17,7 +17,7 @@ function LocationDetail(props) {
     <div className={` location-detail`}>
       {/* This is the label */}
       <div className="label-box">
-        <div className="title title-main">Title:</div>
+        <div className="title-main">Location:</div>
         <div className="title">{selectedLocation.title}</div>   
       </div> 
 

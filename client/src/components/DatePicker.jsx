@@ -33,7 +33,7 @@ const addLocation =  async (e) => {
 }
 
   return(
-    <div>
+    <div className="container-fluid date-picker">
       <DayPicker 
     selectedDays={selectedDay}
     onDayClick={handleDayClick} />
