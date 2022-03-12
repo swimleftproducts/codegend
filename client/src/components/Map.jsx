@@ -22,8 +22,12 @@ function Map(props) {
     setInfoBoxOffset,
   } = useContext(LocationContext);
 
-  const { setShowDashboard, setShowDatePicker, setShowRecentVisitors, setShowHighScore } =
-    useContext(DisplayContext);
+  const {
+    setShowDashboard,
+    setShowDatePicker,
+    setShowRecentVisitors,
+    setShowHighScore,
+  } = useContext(DisplayContext);
 
   const { auth } = props;
 
@@ -87,11 +91,11 @@ function Map(props) {
                 : 'http://maps.google.com/mapfiles/ms/icons/red.png'
             }`}
             onClick={() => {
-             
-              
               setShowHighScore(false);
               setShowDashboard(false);
               setSelectedLocation(location);
+              setShowDatePicker(false)
+              setShowRecentVisitors(true);
             }}
           />
         );
@@ -112,6 +116,7 @@ function Map(props) {
             setShowRecentVisitors(true);
             setInfoBoxOffset(-40);
           }}
+       
         >
           <LocationDetail auth={auth} />
         </InfoWindow>
