@@ -1,4 +1,4 @@
-import React,{ useContext} from 'react'
+import React,{ useContext,useEffect} from 'react'
 import VisitButtons from './VisitButtons';
 import DatePicker from './DatePicker'
 import RecentVisitors from './RecentVisitors';
@@ -9,10 +9,14 @@ function LocationDetail(props) {
 
   const {selectedLocation, setSelectedLocation, setInfoBoxOffset} = useContext(LocationContext)
 
-  const{showDatePicker,showRecentVisitors} = useContext(DisplayContext)
+  const{showDatePicker,setShowDatePicker,showRecentVisitors} = useContext(DisplayContext)
 
   const {auth}=props
   
+  useEffect(() => {
+   
+  },[])
+
   return (
     <div className={` location-detail`}>
       {/* This is the label */}
@@ -28,14 +32,13 @@ function LocationDetail(props) {
      
       <div className='close-icon' >
         <div className='' onClick={()=>{
-          setInfoBoxOffset(-40) 
+          setInfoBoxOffset(-30) 
           setSelectedLocation(null)}}>
            <i className="bi bi-caret-up-fill "></i>
           <p>close</p>
         </div>
-       
       </div>
-      
+      {showDatePicker?"":<div className='location-arrow'></div>}    
       
     </div>
   )

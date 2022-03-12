@@ -87,6 +87,8 @@ function Map(props) {
                 : 'http://maps.google.com/mapfiles/ms/icons/red.png'
             }`}
             onClick={() => {
+             
+              
               setShowHighScore(false);
               setShowDashboard(false);
               setSelectedLocation(location);

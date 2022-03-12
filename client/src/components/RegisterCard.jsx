@@ -37,13 +37,13 @@ export default function RegisterCard(props) {
    
   }
   const validateName =()=>{
-    if(name.length<=1){
+    if(name.length<=2){
       setNameMessage("at least 2 letters")
     }
     if(name.length===0){
       setNameMessage("")
     }
-    if(name.length>1){
+    if(name.length>2){
       setNameMessage("")
     }
   }
@@ -84,7 +84,7 @@ export default function RegisterCard(props) {
             
            
             <div className="form-outline mb-2">
-            <label className="form-label p-0 m-0 " htmlFor="email">Name</label>
+            <label className="form-label p-0 m-0 " htmlFor="email">First Name</label>
               <input type="email" id="name" className="form-control form-control-lg"
               onChange={(e) => {
                 setName(e.target.value) 

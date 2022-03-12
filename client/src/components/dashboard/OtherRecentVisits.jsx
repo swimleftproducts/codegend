@@ -12,7 +12,13 @@ function OtherRecentVisits() {
     const day = date.getDate()
     return `${month+1}/${day}/${year}`
   }
-   
+  const renderName = (name)=>{
+    if(name.length>6){
+      name=name.slice(0,6)+"..."
+    }
+    return name
+  } 
+
   const renderVisits = () => {
     if(info.othersVisits){
       return  info.othersVisits.map((visit,index) => { 
@@ -20,7 +26,7 @@ function OtherRecentVisits() {
          <div key={index} className='other-recent-visits-entry'>
              <p >{visit.title}</p>
              <p>{makeDate(visit.date)}</p>
-             <p>{visit.name}</p>
+             <p>{renderName(visit.name)}</p>
          </div>
          )
                    

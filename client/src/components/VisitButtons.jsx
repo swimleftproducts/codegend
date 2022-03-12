@@ -42,12 +42,10 @@ function VisitButtons(props) {
     }) 
   }
   const pickDate =() => {
-    //try and target triangle
-   
     if(!showDatePicker){
       setInfoBoxOffset(150)
     }else{
-      setInfoBoxOffset(-40)
+      setInfoBoxOffset(-30)
     }
     setShowDatePicker((prevState)=>{return !prevState});
     setShowRecentVisitors((prevState)=>{return !prevState})

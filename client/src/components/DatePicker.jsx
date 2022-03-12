@@ -28,17 +28,17 @@ const addLocation =  async (e) => {
     setSelectedLocation(response.data)
     setShowDatePicker(false);
     setShowRecentVisitors(true)
-    setInfoBoxOffset(-40)
+    setInfoBoxOffset(-30)
   }) 
 }
 
   return(
-    <div className="container-fluid date-picker">
+    <div className="date-picker">
       <DayPicker 
     selectedDays={selectedDay}
-    onDayClick={handleDayClick} />
+    onDayClick={handleDayClick}/>
     <p> You visited on: {`${selectedDay.getUTCMonth()+1}/${selectedDay.getUTCDate()}`}</p>
     <button className="btn-add-past-visit" onClick={addLocation}>Confirm Visit</button>
-    </div>
-  )
+    </div>  
+  ) 
 }

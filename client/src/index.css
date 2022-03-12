@@ -9,7 +9,7 @@
   padding: 0%;
   box-sizing: border-box;
 }
-p{
+p {
   margin: 5px 0px;
 }
 body {
@@ -115,28 +115,38 @@ body {
   border-radius: 0px !important;
 }
 .gm-style .gm-style-iw-c {
- 
   background: rgba(255, 255, 255, 0.5);
   box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(8px);
   border-radius: 4px;
 }
 /* ** Hide the "x" on the top right corner of locationDetail */
-[aria-label="Close"] {
-  display: none!important;
+[aria-label='Close'] {
+  display: none !important;
 }
-/* .gm-style .gm-style-iw-t::after{
+ .gm-style .gm-style-iw-t::after{
   display:none;
-} */
+} 
+
+.gm-style-iw-t::after {
+  /* background: rgba(255, 255, 255, 0.5) !important; */
+
+  background: linear-gradient(
+    45deg,
+    rgba(45, 48, 63, 0.5) 50%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, 0) 100%
+  ) !important;
+  /* backdrop-filter: blur(8px); */
+}
 
 /* * Gets rid of the weird space on the right corner */
 .gm-style-iw-d {
   overflow: visible !important;
 }
 .gm-style-iw {
-  padding: 8px!important;
+  padding: 8px !important;
 }
-
 .location-detail {
   width: 304px;
   height: 100%;
@@ -150,6 +160,26 @@ body {
   transform: translate(0, 150px);
 }
 
+.date-picker {
+  width: 100%;
+}
+.DayPicker {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 12px 0;
+  padding: 8px;
+  background-color: white;
+  border: #424ead 2px solid;
+  border-radius: 4px;
+}
+.DayPicker-wrapper {
+  padding: 0 !important;
+  margin: 0 auto !important;
+}
+.DayPicker-Month {
+  margin: 0 !important;
+}
 .label-box {
   display: flex;
   flex-direction: row;
@@ -359,7 +389,7 @@ button {
 .highscore-title i {
   font-size: 25px;
   /* padding-right: 10px; */
-  
+
   width: 40%;
   line-height: 30px;
 }
@@ -382,7 +412,6 @@ button {
   display: flex;
   width: 100%;
   flex-direction: column;
-  
 }
 .leaderboard-main-item {
   width: 100%;
@@ -510,6 +539,12 @@ button {
 }
 
 @media screen and (max-width: 360px) {
+  .register,
+  .login {
+    width: 80%;
+    z-index: 15;
+  }
+
   .dashboard {
     width: 300px;
     height: 80% !important;
@@ -620,9 +655,9 @@ button {
 .my-recent-visits {
   width: 100%;
   height: 100%;
- 
+
   color: white;
-  
+
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -644,33 +679,34 @@ button {
   justify-content: space-between;
 }
 
-.other-recent-visits-entry, .my-recent-visits-entry {
- align-items: center;
+.other-recent-visits-entry,
+.my-recent-visits-entry {
+  align-items: center;
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 .my-recent-visits-entry:nth-child(odd) {
-background-color: #494950;
+  background-color: #494950;
 }
 
 .other-recent-visits-entry:nth-child(odd) {
   background-color: #5c66b5;
-  }
-.other-recent-visits-entry p:first-of-type ,.my-recent-visits-entry p:first-of-type {
+}
+.other-recent-visits-entry p:first-of-type,
+.my-recent-visits-entry p:first-of-type {
   text-align: start;
   font-size: 10px;
   width: 65%;
 }
 
-.other-recent-visits-entry p:nth-of-type(2),.my-recent-visits-entry p:nth-of-type(2) {
+.other-recent-visits-entry p:nth-of-type(2),
+.my-recent-visits-entry p:nth-of-type(2) {
   font-size: 10px;
   width: 30%;
   text-align: center;
   padding: 5px;
 }
-
-
 
 .quickInfo,
 .leaderboard {
@@ -709,7 +745,6 @@ background-color: #494950;
 }
 
 .quick-info-value {
- 
   width: 100%;
   height: 70%;
   display: flex;
@@ -729,7 +764,7 @@ background-color: #494950;
   text-align: end;
 }
 .quick-info-value h4:nth-child(3) {
-  text-align: start
+  text-align: start;
 }
 
 .quick-info-value h5 {
@@ -764,7 +799,28 @@ background-color: #494950;
   padding: 8px;
 }
 
-.test-name{
-  color:green !important;
+.test-name {
+  color: green !important;
   background-color: blue !important;
+}
+
+.location-arrow {
+  position: absolute;
+  bottom: -8px;
+  margin: 0 auto;
+  width: 15px;
+  height: 15px;
+  
+  transform: translate(-50%, 0) rotate(-45deg) ;
+  left: 50%;
+  background: linear-gradient(
+    45deg,
+    rgba(45, 48, 63, 0.5) 50%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, 0) 100%
+  ) !important;
+}
+
+[role="dialog"] {
+  overflow: visible!important;
 }

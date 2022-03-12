@@ -10,7 +10,7 @@ export const LocationProvider = (props) => {
   })
   const[locations,setLocations]=useState([])
   const[selectedLocation,setSelectedLocation]=useState(null)
-  const[infoBoxOffset,setInfoBoxOffset]=useState(-40);
+  const[infoBoxOffset,setInfoBoxOffset]=useState(-30);
 
   async function getLocationData(){
     let response = await axios('/api/geo/markers')

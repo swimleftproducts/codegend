@@ -55,6 +55,18 @@ function App() {
     }
   };
 
+  const renderName = () => {
+    let name;
+    
+    if(auth.name.length>6){
+      name =auth.name.slice(0,6)+"..."
+    }else{
+      name = auth.name;
+    }
+
+    return name
+  }
+
   return (
     <div className="App">
       {showRegister || showLogin ? (
@@ -74,7 +86,7 @@ function App() {
           className="btn login-btn-secondary register-btn "
           onClick={toggleDashboard}
         >
-          {auth.name}
+          {renderName()}
         </button>
       ) : null}
 
