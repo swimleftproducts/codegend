@@ -115,14 +115,27 @@ body {
   border-radius: 0px !important;
 }
 .gm-style .gm-style-iw-c {
-  background: rgba(255, 255, 255, 0.8);
+ 
+  background: rgba(255, 255, 255, 0.5);
   box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(8px);
   border-radius: 4px;
 }
+/* ** Hide the "x" on the top right corner of locationDetail */
+[aria-label="Close"] {
+  display: none!important;
+}
 /* .gm-style .gm-style-iw-t::after{
   display:none;
 } */
+
+/* * Gets rid of the weird space on the right corner */
+.gm-style-iw-d {
+  overflow: visible !important;
+}
+.gm-style-iw {
+  padding: 8px!important;
+}
 
 .location-detail {
   width: 304px;
@@ -140,22 +153,24 @@ body {
 .label-box {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 8px;
   width: 100%;
   background: #282b34;
   color: white;
-  margin-top: 12px;
+  /* margin-top: 12px; */
 }
 
 .title {
-  width: 50%;
+  width: 100%;
   text-align: center;
 }
 
 .title-main {
-  font-size: 22px;
+  width: 65%;
+  font-size: 20px;
+  text-align: center;
 }
 
 .visit-btn-box {
@@ -322,7 +337,7 @@ button {
   transform: translate(0%, -50%);
   top: 50%;
   z-index: 10;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(8px);
   box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -332,25 +347,25 @@ button {
 .highscore-title {
   width: 100%;
   border-radius: 4px;
-  border: white 2px solid;
   text-align: center;
   background-color: var(--secondary-color);
   color: white;
   height: 45px;
   display: flex;
   align-content: center;
-  justify-content: center;
-  padding: 5px;
+  justify-content: space-between;
+  padding: 8px;
 }
 .highscore-title i {
-  display: inline;
   font-size: 25px;
-  padding-right: 10px;
+  /* padding-right: 10px; */
+  
+  width: 40%;
+  line-height: 30px;
 }
 .highscore-title h5 {
-  height: 100%;
-  line-height: 35px;
-  display: inline;
+  width: 100%;
+  line-height: 30px;
 }
 .highscore-label {
   margin-top: 5px;
@@ -420,7 +435,7 @@ button {
   width: 520px;
   height: 820px;
   z-index: 10;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(8px);
   box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
   transform: translate(-50%, -50%);
@@ -544,7 +559,7 @@ button {
     position: sticky;
     width: 120%;
     bottom: -1px;
-    /* background-color: rgba(255, 255, 255, 0.7);
+    /* background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(8px); */
     background-color: white;
     /* //border: 3px var(--secondary-color) solid; */
@@ -556,9 +571,14 @@ button {
     width: 120%;
     height: 20px;
     bottom: -20px;
-    /* background-color: rgba(255, 255, 255, 0.7);
+    /* background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(8px); */
     background-color: white;
+  }
+  .highscore-card {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 

@@ -41,7 +41,7 @@ function HighScoreCard(props) {
     <div onClick={hide} className="highscore-card card  ">
       <div className="highscore-title">
         <i
-          className=" bi bi-bar-chart-fill"
+          className="bi bi-bar-chart-fill"
           onClick={() => {
             setShowHighScore(true);
           }}
