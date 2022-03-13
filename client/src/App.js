@@ -77,7 +77,7 @@ function App() {
             setShowLogin(false);
           }}
         >
-          modal
+         
         </div>
       ) : null}
 

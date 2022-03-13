@@ -591,8 +591,8 @@ button {
   .gm-style-iw-c {
     max-width: 300px !important;
   }
-  .close-icon {
-    /* display: none; */
+  .dashboard .close-icon {
+    display: none;
   }
   .close-icon-mobile {
     display: flex;
