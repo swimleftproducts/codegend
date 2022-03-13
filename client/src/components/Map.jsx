@@ -71,6 +71,7 @@ function Map(props) {
       zoom={10}
       center={mapCenter}
       options={options}
+      onClick={()=>{setShowHighScore(false)}}
     >
       {locations.map((location) => {
         let visited = false;
@@ -120,7 +121,6 @@ function Map(props) {
             setInfoBoxOffset(-40);
           }}
           zIndex={125}
-       
         >
           <LocationDetail auth={auth} />
         </InfoWindow>

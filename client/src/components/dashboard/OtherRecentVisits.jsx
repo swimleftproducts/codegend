@@ -45,7 +45,7 @@ function OtherRecentVisits() {
           <h6>Other Recent Visits:</h6>
          
       </div>
-      <div className="my-recent-visits-list">
+      <div className="other-recent-visits-list">
        {renderVisits()}
       </div>
     </div>
