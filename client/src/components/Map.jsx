@@ -7,6 +7,7 @@ import {
   MarkerClusterer,
 } from '@react-google-maps/api';
 import LocationDetail from './LocationDetail';
+import HighScoreCard from './HighScoreCard';
 import { LocationContext } from './LocationContext';
 import { DisplayContext } from './DisplayContext';
 import axios from 'axios';
@@ -23,6 +24,7 @@ function Map(props) {
   } = useContext(LocationContext);
 
   const {
+    showHighScore,
     setShowDashboard,
     setShowDatePicker,
     setShowRecentVisitors,
@@ -105,6 +107,7 @@ function Map(props) {
           options={{
             pixelOffset: new window.google.maps.Size(0, infoBoxOffset),
             noRedraw: true,
+           
           }}
           position={{
             lat: selectedLocation.lat,
@@ -116,11 +119,13 @@ function Map(props) {
             setShowRecentVisitors(true);
             setInfoBoxOffset(-40);
           }}
+          zIndex={125}
        
         >
           <LocationDetail auth={auth} />
         </InfoWindow>
       ) : null}
+     
     </GoogleMap>
   );
 }

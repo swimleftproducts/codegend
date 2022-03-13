@@ -115,6 +115,7 @@ body {
   border-radius: 0px !important;
 }
 .gm-style .gm-style-iw-c {
+ 
   background: rgba(255, 255, 255, 0.5);
   box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(8px);
@@ -147,6 +148,7 @@ body {
 .gm-style-iw {
   padding: 8px !important;
 }
+
 .location-detail {
   width: 304px;
   height: 100%;
@@ -155,6 +157,7 @@ body {
   justify-content: center;
   align-items: flex-start;
   padding: 8px;
+  z-index: 25!important;
 }
 .date-pickerAdjust {
   transform: translate(0, 150px);
@@ -357,7 +360,7 @@ button {
   transform: translate(0%, -50%);
   border-radius: 0px 5px 5px 0px;
   top: 50%;
-  z-index: 10;
+  z-index: 1;
   background-color: var(--secondary-color);
 }
 .highscore-card {
@@ -539,6 +542,9 @@ button {
 }
 
 @media screen and (max-width: 360px) {
+
+
+
   .register,
   .login {
     width: 80%;
@@ -581,13 +587,14 @@ button {
   }
   .location-detail {
     width: 100%;
+  
   }
   .gm-style-iw,
   .gm-style-iw-c {
-    max-width: 300px !important;
+    max-width: 275px !important;  
   }
   .close-icon {
-    display: none;
+    /* display: none; */
   }
   .close-icon-mobile {
     display: flex;
