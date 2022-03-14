@@ -8,11 +8,12 @@ const setupController = require('../controllers/setupController.js')
 const {ApiError} = require('../errorHandling/errorHandler')
 
 module.exports= (app) => {
+    if(process.env.NODE_ENV !== 'production'){
     //setup route
     app.get('/api/setup/clearUsers',setupController.clear)
     app.get('/api/setup/loadLocations',setupController.loadLocations) 
     app.get('/api/setup/clearLocations',setupController.clearLocations)
-
+    }
     //auth routes
     app.get('/api/auth/test',authController.test)
     app.post('/api/auth/register',authController.register)
