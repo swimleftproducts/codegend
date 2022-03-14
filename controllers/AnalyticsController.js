@@ -197,6 +197,8 @@ module.exports = {
       }
     });
 
-    res.send(returnData);
+    
+    // I limit the returned recent visits to 10 results
+    res.send(returnData.slice(0,10));
   },
 };
