@@ -51,6 +51,7 @@ function VisitButtons(props) {
          setShowRecentVisitors(true)
          return
       }else{
+         setHasVisited(false)
          getLocationData()
          setSelectedLocation(response.data)
          setShowDatePicker(false);
