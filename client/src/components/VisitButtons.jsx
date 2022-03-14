@@ -25,7 +25,7 @@ function VisitButtons(props) {
 
   const checkOff=async ()=>{
     const locData = {id:selectedLocation._id}
-    console.log('visitbutn', locData);
+    
     await axios.post('/api/geo/addlocation',locData, { withCredentials: true })
     .then((response) => { 
       if(response.data.saved===false){
@@ -41,6 +41,24 @@ function VisitButtons(props) {
       
     }) 
   }
+
+  const removeVisit=async ()=>{
+    const locData = {id:selectedLocation._id}
+    await axios.post('/api/geo/unvisitpastlocation',locData, { withCredentials: true })
+    .then((response) => { 
+      if(response.data.saved===false){
+         setShowDatePicker(false);
+         setShowRecentVisitors(true)
+         return
+      }else{
+         getLocationData()
+         setSelectedLocation(response.data)
+         setShowDatePicker(false);
+         setShowRecentVisitors(true)
+      }
+    }) 
+
+  }
   const pickDate =() => {
     if(!showDatePicker){
       setInfoBoxOffset(150)
@@ -54,7 +72,7 @@ function VisitButtons(props) {
   return (
     <div className="visit-btn-box">
        
-    <button className={`${hasVisited?"btn-today-disabled":null} visit-btn-today`} disabled={hasVisited?true:false} onClick={checkOff} >{hasVisited?"Already Visited":"Visited today?"}</button>
+    <button className={`${hasVisited?"btn-today-unvisit":null} visit-btn-today`}  onClick={()=>{hasVisited?removeVisit():checkOff()}} >{hasVisited?"Un-visit":"Visited today?"}</button>
     <button className="visit-btn-past" onClick={pickDate}>{hasVisited?"Change date":"Visited in past"}</button>
   
     </div>

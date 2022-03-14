@@ -81,6 +81,7 @@ module.exports = {
       Location.findById(req.body.id)
         .lean()
         .then((data) => {
+         
           res.send(data);
         });
     } else {
@@ -98,9 +99,37 @@ module.exports = {
       Location.findById(req.body.id)
         .lean()
         .then((data) => {
-          console.log(data);
+         
           res.send(data);
         });
     }
+  },
+  async unvisitPastLocation(req, res, next) {
+    let user = await User.findById(req.user._id).exec();
+    //location to return
+    let location;
+    //remove the user visit from the location document
+   await Location.findByIdAndUpdate(
+      { _id: req.body.id },
+      { $pull: { visitedBy: { userId: req.user.id } }},
+      {new:true}
+    ).then((updatedLocation) => {
+      location = updatedLocation
+      //console.log('removed from location',location);
+    });
+
+    // remove location from user history
+    
+   await  User.findByIdAndUpdate(
+      { _id: req.user.id },
+      { $pull: { locationsVisited: req.body.id } }
+    ).then(() => {
+    //  console.log('removed from user: ', req.body.id);
+    });
+
+
+    //get data to send back
+
+    res.send(location);
   },
 };

@@ -235,6 +235,15 @@ body {
 .visit-btn-today {
   border-radius: 4px 0px 0px 4px !important;
 }
+.btn-today-unvisit{
+  background-color: red;
+  border: red 1px solid !important;
+  color:white;
+}
+.btn-today-unvisit:hover{
+  background-color: rgba(255,0,0,.8) !important;
+  border: red 1px solid !important;
+}
 .btn-today-disabled {
   background-color: #282b3483;
   color: white;
