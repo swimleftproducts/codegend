@@ -2,6 +2,8 @@ const { User } = require('../models');
 const { genPassword, compare } = require('../authConfig/helpers');
 const passport = require('../authConfig');
 const { ApiError } = require('../errorHandling/errorHandler');
+const sendEmail = require('./utils.js')
+const crypto = require("crypto");
 
 module.exports = {
   test(req, res, next) {
@@ -127,4 +129,44 @@ module.exports = {
       res.send({ authenticated: false });
     }
   },
+
+  async reset(req,res,next){
+    const {email} = req.body;
+     let user = await User.findOne({ email:email});
+     if(!user){
+       return
+     }
+     let resetToken = crypto.randomBytes(32).toString("hex");
+     user.resetToken = resetToken;
+     user.save()
+    // build link
+
+    //send email to user that includes a link with the token  
+    sendEmail(user.email,"GeoCache - PW Reset",{rootURL:process.env.ROOTURL,token:resetToken},"./templates/welcome.handlebars")
+     res.send({message: "hi!"})
+  },
+
+
+
+  async resetfinish(req,res,next){
+    const {password, token}=req.body
+    //find user with matching token
+    let user = await User.findOne({ resetToken: token });
+    if (user) {
+      const saltHash = genPassword(password);
+      const salt = saltHash.salt;
+      const hash = saltHash.hash;
+      user.hash= hash;
+      user.salt= salt;
+      user.resetToken=null;
+
+      await user.save();
+      res.send({message:"Password Reset"})
+    }else{
+      res.status(404).send({message:"Reset not successful"})
+    }
+
+  
+
+  }
 };

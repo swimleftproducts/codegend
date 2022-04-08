@@ -20,7 +20,9 @@ module.exports= (app) => {
     app.post('/api/auth/login',authController.login)
     app.get('/api/auth/logout',authController.logout)
     app.get('/api/auth/isauthenticated',authController.isAuthenticated)
-
+    app.post("/api/auth/resetpw",authController.reset)
+    app.post("/api/auth/resetfinish",authController.resetfinish)
+    
     //stats related routes
     app.get('/api/analytics/highscore/:number?',analyticsController.getHighScores)
     app.get('/api/analytics/userStats/:id/:months?',checkAuthenticated,analyticsController.userStats)

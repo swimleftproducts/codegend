@@ -14,6 +14,9 @@ const userSchema = new Schema({
   salt:{
     type:String
   },
+  resetToken:{
+    type: String
+  },
   locationsVisited:[
       {
       type: mongoose.ObjectId,

@@ -9,6 +9,7 @@ export const DisplayProvider = (props) => {
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [showRecentVisitors, setShowRecentVisitors] = useState(true);
   const [showDashboard, setShowDashboard] = useState(false);
+  const [showReset, setShowReset] = useState(false);
 
   return (
     <DisplayContext.Provider
@@ -25,6 +26,8 @@ export const DisplayProvider = (props) => {
         setShowLogin,
         setShowHighScore,
         showHighScore,
+        setShowReset,
+        showReset,
       }}
     >
       {props.children}

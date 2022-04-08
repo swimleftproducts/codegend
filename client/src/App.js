@@ -6,9 +6,11 @@ import RegisterCard from './components/RegisterCard';
 import HighScoreCard from './components/HighScoreCard';
 import Map from './components/Map';
 import Dashboard from './components/Dashboard';
+import ResetCard from './components/ResetCard'
 import { DisplayContext } from './components/DisplayContext';
 import { AuthContext } from './components/AuthContext';
 import { LocationContext } from './components/LocationContext';
+
 
 function App() {
   const {
@@ -20,6 +22,8 @@ function App() {
     showHighScore,
     setShowDashboard,
     showDashboard,
+    setShowReset,
+    showReset
   } = useContext(DisplayContext);
 
   const {setSelectedLocation}= useContext(LocationContext)
@@ -33,10 +37,12 @@ function App() {
   const toggleLogin = (e) => {
     setShowRegister(false);
     setShowLogin(!showLogin);
+     setShowReset(false);
   };
   const toggleRegister = (e) => {
     setShowLogin(false);
     setShowRegister(!showRegister);
+    setShowReset(false);
   };
 
   const toggleDashboard = (e) => {
@@ -69,12 +75,14 @@ function App() {
 
   return (
     <div className="App">
-      {showRegister || showLogin ? (
+    
+      {showRegister||showReset || showLogin ? (
         <div
           className="modal-active "
           onClick={() => {
             setShowRegister(false);
             setShowLogin(false);
+            setShowReset(false);
           }}
         >
          
@@ -112,6 +120,7 @@ function App() {
       {showDashboard ? <Dashboard /> : null}
       {showLogin ? <LoginCard setAuth={setAuth} /> : null}
       {showRegister ? <RegisterCard setAuth={setAuth} /> : null}
+      {showReset?<ResetCard/>:null}
       {showHighScore ? (
         <HighScoreCard />
       ) : (
@@ -125,6 +134,7 @@ function App() {
         ></i>
       )}
       <Map auth={auth} />
+     
     </div>
   );
 }
