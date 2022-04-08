@@ -142,7 +142,7 @@ module.exports = {
     // build link
 
     //send email to user that includes a link with the token  
-    sendEmail(user.email,"GeoCache - PW Reset",{rootURL:process.env.ROOTURL,token:resetToken},"./templates/welcome.handlebars")
+    await sendEmail(user.email,"GeoCache - PW Reset",{rootURL:process.env.ROOTURL,token:resetToken},"./templates/welcome.handlebars")
      res.send({message: "hi!"})
   },
 
