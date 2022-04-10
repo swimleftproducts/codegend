@@ -23,6 +23,7 @@
     "express": "*",
     "express-session": "^1.17.2",
     "formik": "^2.2.9",
+    "googleapis": "^100.0.0",
     "handlebars": "^4.7.7",
     "mongoose": "*",
     "nodemailer": "^6.7.3",
