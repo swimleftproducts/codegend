@@ -14,6 +14,7 @@ function VisitButtons(props) {
     if(selectedLocation.visitedBy.length===0){  
       setHasVisited(false)
     }else {
+      setHasVisited(false);
       selectedLocation.visitedBy.forEach(visitor=>{
         if(visitor.userId===auth.id){
           setHasVisited(true)
